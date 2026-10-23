@@ -19,7 +19,7 @@ create table if not exists wishes (
   -- Validate in the DATABASE, not in the browser. A browser check is a
   -- courtesy; this is the actual boundary, because anyone can skip our JS
   -- and POST directly with the anon key.
-  constraint who_allowed check (who in ('大女','細女','媽媽','社工媽媽')),
+  constraint who_allowed check (who in ('大女','細女','媽媽')),
   constraint what_len     check (char_length(btrim(what)) between 1 and 60),
   constraint why_len      check (why is null or char_length(why) <= 200),
   constraint how_range    check (how is null or how between 1 and 5)

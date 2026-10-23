@@ -55,7 +55,7 @@
   <p><strong>點解有用：</strong>傾偈、影相、寫嘢嘅時候唔使停低打字</p>
   <p style="color:var(--ink-dim)"><strong>現況：</strong>未開通。<strong>粵語辨識係已知難題</strong>——
      助理要真係聽得明先會開，唔會開咗之後你講乜都認錯。
-     <a href="#stt">技術細節睇呢度</a></p>
+     想試嘅話，同助理講「我想試下講嘢」。</p>
 </div>
 
 <h3>2. 語音讀出（TTS）</h3>
@@ -97,36 +97,6 @@
   <p style="color:var(--ink-dim)"><strong>現況：</strong>未做。一個 request 出三張都得。</p>
 </div>
 
-<h2 id="stt">語音點解未有？（睇得 technical 嘅人）</h2>
-
-<div class="note">
-  呢度解釋點解「講嘢就有」唔係撳個掣咁簡單。
-  屋企人唔需要睇，但幫手維護嘅人應該知道。
-</div>
-
-<h3>要有咩先做到</h3>
-<p>語音輸入（STT）要三樣嘢：</p>
-<table>
-  <tr><th>要咩</th><th>解釋</th></tr>
-  <tr><td>一個語音辨識服務</td><td>將聲音變成文字。有本地（免費但慢）
-      或者雲端（快但要帳戶同錢）。</td></tr>
-  <tr><td>粵語辨識準</td><td>粵語<strong>唔係</strong>標準語音。
-      現有服務對粵語嘅準確度<strong>明顯低過</strong>普通話同英文。</td></tr>
-  <tr><td>一個 key 或者本機計力</td><td>決定用邊個服務、要唔要俾錢</td></tr>
-</table>
-
-<h3>點解唔急住開</h3>
-<p>
-  如果開咗，但係聽錯 —— 例如問「幾時放學」聽成「食咩飯」——
-  結果<strong>比打字更令人煩躁</strong>。
-  所以規矩係：<strong>真係測過先用</strong>。
-</p>
-
-<div class="prompt">
-  <b>（想試嘅話）</b>「我想試下講嘢，邊度試？」
-</div>
-<p>管理員會開一個試用頻道，同埋實測粵語準確度。</p>
-
 <h2>許願表</h2>
 <p>
   下面呢個表淨係用嚟<strong>砌好一句說話</strong>，
@@ -142,7 +112,6 @@
       <option>大女</option>
       <option>細女</option>
       <option>媽媽</option>
-      <option>社工媽媽</option>
     </select>
   </div>
 
@@ -200,7 +169,7 @@
 <h2>點樣排優先次序</h2>
 <p>管理員會照呢個次序諗：</p>
 <ol>
-  <li><strong>幾多人想要</strong> —— 四個人都要嘅排先</li>
+  <li><strong>幾多人想要</strong> —— 全家都要嘅排先</li>
   <li><strong>幾常要用</strong> —— 每日用嘅好過一年用一次</li>
   <li><strong>做得到幾穩陣</strong> —— 唔會出錯嘅排先</li>
   <li><strong>幾花時間</strong> —— 細嘅排先</li>

@@ -208,6 +208,25 @@ def main() -> int:
             if f'href="{dst}"' not in s:
                 err(f"nav: {src} has no link to {dst}")
 
+    # The wishlist's <select> and the database's who_allowed constraint must
+    # list the same people. They drifted once already (a fourth name existed in
+    # one and not the other), and nobody noticed because the constraint is only
+    # enforced after an admin wires up Supabase.
+    sel = os.path.join(ROOT, "wishlist.html")
+    sql = os.path.join(ROOT, "supabase", "wishlist.sql")
+    if os.path.exists(sel) and os.path.exists(sql):
+        opts = re.findall(r"<option>([^<]+)</option>",
+                          open(sel, encoding="utf-8").read())
+        opts = [o for o in opts if o.strip() and not o.startswith(" ")]
+        src = open(sql, encoding="utf-8").read()
+        m = re.search(r"who\s+in\s*\(([^)]*)\)", src)
+        allowed = re.findall(r"'([^']+)'", m.group(1)) if m else []
+        if sorted(opts) != sorted(allowed):
+            err(f"who mismatch: page offers {opts}, "
+                f"database allows {allowed}")
+        else:
+            print(f"  who ok   {len(opts)} names match the constraint")
+
     svg_dir = os.path.join(ROOT, "assets", "svg")
     if os.path.isdir(svg_dir):
         for f in sorted(os.listdir(svg_dir)):

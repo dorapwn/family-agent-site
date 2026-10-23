@@ -97,7 +97,8 @@ before anyone relies on it:
   at the grant level. The revoke is defence in depth — if someone later adds a
   `select` policy by mistake, the grant still blocks the read.
 - update / delete / truncate as `anon` → denied, both by policy and by revoke
-- `who` outside the four names → rejected by `who_allowed`
+- `who` outside the three names (大女 / 細女 / 媽媽) → rejected by `who_allowed`.
+  社工媽媽 is not a separate person — she is 媽媽, so she is not an option.
 - `what` of 61 chars, or whitespace only → rejected by `what_len`
 - `why` of 201 chars → rejected by `why_len` (200 passes)
 - `how` of 9 → rejected by `how_range`
