@@ -57,17 +57,15 @@
 </div>
 
 <h3>實際流程</h3>
-<pre><code>你講：「幫我影 HKEAA 文憑試時間表」
-    ↓
-助理開一個無頭瀏覽器
-    ↓
-去 hkeaa.edu.hk 開頁面，等佢載入完
-    ↓
-影一張圖，存低
-    ↓
-放上 GitHub，跟網頁一齊 publish
-    ↓
-你喺指南見到嗰張圖</code></pre>
+<figure>
+  <img class="shot" src="assets/svg/flow-capture.svg"
+       alt="影網頁截圖流程圖：你講要求 → 開無頭瀏覽器 → 去網址載入 → 影相存低 → 放上 GitHub → 指南見到圖">
+  <figcaption class="small">
+    每一步都要等上一個做完先做下一步。
+    <a href="https://github.com/dorapwn/family-agent-site/blob/main/assets/svg/flow-capture.svg"
+       target="_blank" rel="noopener">SVG 原始碼（GitHub）</a>
+  </figcaption>
+</figure>
 
 <p>
   呢兩張就係咁做出嚟嘅：
@@ -121,9 +119,17 @@
 <p>主頁頂部嗰條 20 秒嘅動畫，做法同 SVG 類似，都係寫代碼出嚟。</p>
 
 <h3>點解字可以郁？</h3>
-<p>
-  條片有 <strong>480 格</strong>。每一格，助理會：
-</p>
+<figure>
+  <img class="shot" src="assets/svg/flow-ascii.svg"
+       alt="ASCII 動畫流程圖：算亮度地圖 → 配符號 → 貼色 → 加掃描線光暈雜訊 → 砌成一格重複 480 次 → 出 MP4">
+  <figcaption class="small">
+    每一步喺每一格重複 480 次。
+    <a href="https://github.com/dorapwn/family-agent-site/blob/main/assets/svg/flow-ascii.svg"
+       target="_blank" rel="noopener">SVG 原始碼（GitHub）</a>
+  </figcaption>
+</figure>
+
+<p>詳細講：</p>
 <ol>
   <li>用數學算出一個「亮度地圖」——
       每一格該著幾多光（0 到 1）</li>
@@ -162,17 +168,15 @@
   流程好簡單：
 </p>
 
-<pre><code>你同助理講：「幫我加多一頁，講⋯⋯」
-    ↓
-助理寫好 HTML 檔
-    ↓
-檢查：啲連結啱唔啱？啲圖片在唔在？
-    ↓
-git commit → git push
-    ↓
-GitHub 自動 publish
-    ↓
-你 refresh 就見到新版</code></pre>
+<figure>
+  <img class="shot" src="assets/svg/flow-publish.svg"
+       alt="改網頁流程圖：同助理講 → 寫 HTML → 自動檢查 → git push → GitHub build → 你見到新版">
+  <figcaption class="small">
+    第 3 步係閘門：任何檢查唔過就唔會 publish。
+    <a href="https://github.com/dorapwn/family-agent-site/blob/main/assets/svg/flow-publish.svg"
+       target="_blank" rel="noopener">SVG 原始碼（GitHub）</a>
+  </figcaption>
+</figure>
 
 <h3>有四道自動檢查</h3>
 <p>

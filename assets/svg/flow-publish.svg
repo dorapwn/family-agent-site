@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 440" width="620" height="440"
+     font-family="ui-monospace, 'DejaVu Sans Mono', Menlo, monospace">
+  <rect width="620" height="440" fill="#12110f"/>
+
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#e8a33d"/>
+    </marker>
+  </defs>
+
+  <text x="20" y="28" fill="#e8a33d" font-size="14">改一次網頁：六步</text>
+
+  <g stroke="#e8a33d" stroke-width="1.6" fill="none" marker-end="url(#ah)">
+    <path d="M 186 68  L 186 92"/>
+    <path d="M 186 126 L 186 150"/>
+    <path d="M 186 184 L 186 208"/>
+    <path d="M 186 242 L 186 266"/>
+    <path d="M 186 300 L 186 324"/>
+  </g>
+
+  <g fill="#1a1815" stroke="#4a443c" stroke-width="1.2">
+    <rect x="26" y="28"  width="320" height="40" rx="6"/>
+    <rect x="26" y="92"  width="320" height="34" rx="6"/>
+    <rect x="26" y="150" width="320" height="34" rx="6"/>
+    <rect x="26" y="208" width="320" height="34" rx="6"/>
+    <rect x="26" y="266" width="320" height="34" rx="6"/>
+    <rect x="26" y="324" width="320" height="34" rx="6"/>
+  </g>
+
+  <g fill="#e8a33d">
+    <circle cx="46" cy="48" r="11"/><circle cx="46" cy="109" r="11"/>
+    <circle cx="46" cy="167" r="11"/><circle cx="46" cy="225" r="11"/>
+    <circle cx="46" cy="283" r="11"/><circle cx="46" cy="341" r="11"/>
+  </g>
+  <g fill="#12110f" font-size="12" text-anchor="middle" font-weight="bold">
+    <text x="46" y="52">1</text><text x="46" y="113">2</text>
+    <text x="46" y="171">3</text><text x="46" y="229">4</text>
+    <text x="46" y="287">5</text><text x="46" y="345">6</text>
+  </g>
+
+  <g fill="#e8e4dc" font-size="12.5">
+    <text x="66" y="52">你同助理講：「幫我加多一頁，講⋯⋯」</text>
+    <text x="66" y="113">助理寫好 HTML 檔</text>
+    <text x="66" y="171">檢查：連結啱唔啱？圖片在唔在？</text>
+    <text x="66" y="229">git commit → git push</text>
+    <text x="66" y="287">GitHub 自動 build</text>
+    <text x="66" y="345">你 refresh 就見到新版</text>
+  </g>
+
+  <!-- gate: the check can stop the whole thing -->
+  <g>
+    <rect x="382" y="150" width="218" height="98" rx="6"
+          fill="#1a1410" stroke="#e8a33d" stroke-width="1.2"/>
+    <text x="396" y="172" fill="#e8a33d" font-size="11">第 3 步係閘門</text>
+    <g fill="#a09a8e" font-size="10.5">
+      <text x="396" y="194">任何一項唔過，就唔 publish。</text>
+      <text x="396" y="214">錯誤會指出檔名同行數：</text>
+      <text x="396" y="234">study.html:113: nested &lt;p&gt;</text>
+    </g>
+    <path d="M 382 199 L 352 199" stroke="#e8a33d" stroke-width="1.2"
+          stroke-dasharray="3 3" fill="none"/>
+  </g>
+
+  <text x="26" y="392" fill="#4fd0c4" font-size="11">
+    好消息：呢個網址唔會變。refresh 就係新版。
+  </text>
+  <text x="26" y="418" fill="#4a443c" font-size="10">
+    由助理自動畫成 SVG。
+  </text>
+</svg>

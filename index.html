@@ -201,15 +201,13 @@
   助理識寫網頁、識將網頁 push 上 GitHub。GitHub 一收到更新，就自動 build 同 publish。
   所以流程好簡單：
 </p>
-<pre><code>你同助理講
-    ↓
-助理寫 HTML + Markdown
-    ↓
-git commit  →  git push
-    ↓
-GitHub Actions 自動 build
-    ↓
-GitHub Pages publish  ← 你而家睇緊呢版</code></pre>
+<figure>
+  <img class="shot" src="assets/svg/flow-publish.svg"
+       alt="改網頁流程圖：同助理講 → 寫 HTML → 自動檢查 → git push → GitHub build → 你見到新版">
+  <figcaption class="small">
+    <a href="behind.html">幕後</a>有詳細講每一步同四道檢查。
+  </figcaption>
+</figure>
 
 <p>
   上面條片亦係同一個道理，只不過多一步：助理先寫一段程式，

@@ -31,8 +31,9 @@ CONTAINERS = ["html", "head", "body", "div", "figure", "figcaption", "table",
 
 ASSETS = ["assets/four-rooms.mp4", "assets/img/poster.png",
           "assets/img/hkeaa-dse-dates.png", "assets/img/hermes-voice-mode.png",
-          "assets/svg/mock-scores.svg", "assets/ascii/four_rooms.py",
-          "style.css"]
+          "assets/svg/mock-scores.svg", "assets/svg/flow-capture.svg",
+          "assets/svg/flow-publish.svg", "assets/svg/flow-ascii.svg",
+          "assets/ascii/four_rooms.py", "style.css"]
 
 # Every page except 404 must be reachable from every other page's nav.
 NAV_PAGES = ["index.html", "telegram.html", "behind.html", "wishlist.html",
