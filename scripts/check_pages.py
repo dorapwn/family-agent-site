@@ -36,9 +36,12 @@ ASSETS = ["assets/four-rooms.mp4", "assets/img/poster.png",
           "assets/ascii/four_rooms.py", "style.css",
           "supabase/submit.js", "supabase/wishlist.sql"]
 
-# Every page except 404 must be reachable from every other page's nav.
-NAV_PAGES = ["index.html", "telegram.html", "behind.html", "wishlist.html",
-             "trouble.html", "study.html", "home.html", "work.html", "fun.html"]
+# One canonical order for the whole site. The four guides come first because
+# they are what a user came for; behind-the-scenes is last because it is the
+# one page they never need.
+NAV_ORDER = ["index.html", "study.html", "home.html", "work.html", "fun.html",
+             "trouble.html", "telegram.html", "wishlist.html", "behind.html"]
+NAV_PAGES = NAV_ORDER
 
 errors: list[str] = []
 
@@ -200,6 +203,38 @@ def main() -> int:
         sp = os.path.join(ROOT, src)
         if not os.path.exists(sp):
             err(f"nav: {src} listed in NAV_PAGES but missing on disk")
+            continue
+        s = open(sp, encoding="utf-8").read()
+        nav = re.search(r"<nav\b.*?</nav>", s, re.S)
+        if nav:
+            found = [h for h in re.findall(r'href="([^"]+\.html)"', nav.group(0))
+                     if h not in (src, "index.html")]
+            # The canonical sequence, minus this page. A nav may link itself
+            # (as a "you are here" marker) or not; either is fine, but every
+            # other page must appear exactly once, in canonical order.
+            expect = [p for p in NAV_ORDER
+                      if p not in (src, "index.html")]
+            if found != expect:
+                err(f"nav: {src} is out of order\n"
+                    f"        got      {found}\n"
+                    f"        expected {expect}")
+
+    # The homepage card grid must present the same order as the nav, otherwise
+    # the front door and the sidebar disagree about what comes next.
+    idx = os.path.join(ROOT, "index.html")
+    if os.path.exists(idx):
+        s = open(idx, encoding="utf-8").read()
+        cards = re.findall(r'<a class="card" href="([^"]+)"', s)
+        expect = [p for p in NAV_ORDER if p != "index.html"]
+        if cards != expect:
+            err(f"homepage grid order:\n"
+                f"        got      {cards}\n"
+                f"        expected {expect}")
+
+    # Link coverage: every page must link to every other page somewhere.
+    for src in NAV_PAGES:
+        sp = os.path.join(ROOT, src)
+        if not os.path.exists(sp):
             continue
         s = open(sp, encoding="utf-8").read()
         for dst in NAV_PAGES:
