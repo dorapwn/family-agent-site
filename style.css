@@ -64,11 +64,12 @@
   .wishform input[type=text]:focus,.wishform textarea:focus,.wishform select:focus{
     outline:none;border-color:var(--amber)}
   .wishform textarea{resize:vertical}
-  .stars{display:flex;gap:8px}
+  .stars{display:flex;gap:8px;flex-wrap:wrap}
   .stars label{cursor:pointer}
   .stars input{position:absolute;opacity:0;pointer-events:none}
-  .stars span{display:block;width:44px;height:44px;line-height:42px;
-    text-align:center;font-size:16px;color:var(--ink-dim);
+  .stars span{display:flex;align-items:center;justify-content:center;
+    min-width:104px;min-height:48px;padding:6px 14px;
+    text-align:center;font-size:15px;line-height:1.35;color:var(--ink-dim);
     border:1px solid var(--line);border-radius:6px;background:var(--paper)}
   .stars input:checked+span{border-color:var(--amber);color:var(--amber)}
   .stars input:focus-visible+span{outline:2px solid var(--amber);outline-offset:2px}

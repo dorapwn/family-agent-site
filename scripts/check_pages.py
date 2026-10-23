@@ -38,7 +38,7 @@ ASSETS = ["assets/four-rooms.mp4", "assets/img/poster.png",
 
 # Every page except 404 must be reachable from every other page's nav.
 NAV_PAGES = ["index.html", "telegram.html", "behind.html", "wishlist.html",
-             "study.html", "home.html", "work.html", "fun.html"]
+             "trouble.html", "study.html", "home.html", "work.html", "fun.html"]
 
 errors: list[str] = []
 

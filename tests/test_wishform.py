@@ -37,7 +37,7 @@ with sync_playwright() as p:
     pg.select_option("#who", "細女")
     pg.fill("#what", "影張相就記低今日做咩")
     pg.fill("#why", "唔想打字")
-    pg.click(".stars label:nth-child(5) span")  # pick 5
+    pg.click('.stars label:has(input[value="5"]) span')  # "好想要好想要"
     check("rating selected", pg.eval_on_selector_all(
         "input[name=how]", "els => els.filter(e=>e.checked).length") == 1)
 

@@ -147,7 +147,7 @@ with sync_playwright() as p:
     pg.select_option("#who", "大女")
     pg.fill("#what", "校曆自動讀")
     pg.fill("#why", "唔使自己抄")
-    pg.click(".stars label:nth-child(4) span")
+    pg.click('.stars label:has(input[value="3"]) span')
     pg.click("button.send")
     pg.wait_for_timeout(1200)
 
@@ -171,7 +171,7 @@ with sync_playwright() as p:
             check("body: who", j.get("who") == "大女", j)
             check("body: what", j.get("what") == "校曆自動讀", j)
             check("body: why", j.get("why") == "唔使自己抄", j)
-            check("body: how as int 4", j.get("how") == 4, j)
+            check("body: how as int 3", j.get("how") == 3, j)
             check("body has exactly the table columns",
                   set(j) == {"who", "what", "why", "how"}, sorted(j))
     msg = pg.inner_text("#preview")
