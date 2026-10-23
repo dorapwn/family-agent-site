@@ -37,6 +37,22 @@ jobs:
           done
           echo "asset check passed"
 
+      - name: Guard against Markdown syntax leaking into HTML
+        run: |
+          set -euo pipefail
+          # These pages are hand-written HTML, not Markdown. A stray **bold**
+          # marker renders literally to the reader, so fail the build on it.
+          if grep -n '\*\*' *.html; then
+            echo "ERROR: Markdown bold markers found in HTML (use <strong>)"
+            exit 1
+          fi
+          # Every page must be reachable from the index cards
+          for p in study home work fun; do
+            grep -q "href=\"$p.html\"" index.html || {
+              echo "ERROR: index.html has no card linking to $p.html"; exit 1; }
+          done
+          echo "content check passed"
+
       - uses: actions/configure-pages@v5
 
       - uses: actions/upload-pages-artifact@v3
