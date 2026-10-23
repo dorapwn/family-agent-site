@@ -31,7 +31,10 @@
   li{margin:6px 0}
   .lede{font-size:17px;color:var(--ink)}
 
-  .grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  /* 200px min lets all four guide cards sit on one row at desktop width
+     (880px wrap - 60px padding = 820px / 4 = 205px). At 230px the grid
+     resolved to 3 columns and stranded the fourth card on its own row. */
+  .grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
     margin:28px 0}
   .card{background:var(--card);border:1px solid var(--line);border-radius:10px;
     padding:20px;display:block;text-decoration:none;color:inherit;transition:.15s}
