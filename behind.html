@@ -184,10 +184,11 @@
   <strong>任何一個唔過就唔會 publish</strong>：
 </p>
 <ol>
-  <li>四個指南頁有冇漏咗連結</li>
+  <li>每一頁有冇漏咗連結（全部頁要互相連得通）</li>
   <li>所有圖片、影片檔在唔在</li>
   <li>SVG 檔格式對唔對（防止畫唔出嚟）</li>
   <li>冇殘留嘅 Markdown 符號（`**`）—— 呢樣捉過我一次</li>
+  <li>冇用文字砌出嚟嘅流程圖（流程圖一定要用 SVG）</li>
 </ol>
 
 <div class="note">
@@ -198,7 +199,44 @@
   唔準再犯。
 </div>
 
-<h2>五、私隱嗰半邊</h2>
+<h2>六、許願表：表格點樣送得到</h2>
+
+<p>
+  你可能會問：GitHub Pages 淨係得啲檔案，<strong>表格填完送去邊？</strong>
+</p>
+
+<div class="note">
+  <strong>答案：GitHub Pages 收唔到表格。</strong>
+  Pages 只係放 HTML、圖片、CSS 落去俾人睇，
+  <strong>冇伺服器</strong>可以接收你撳「送出」嗰一下。
+  呢個唔係壞咗，係 Pages 本身設計咁。
+</div>
+
+<p>
+  所以表格唔會「自己送去」。佢改為做一件事：
+  <strong>砌好一句說話，然後叫醒 Telegram。</strong>
+  Telegram 開一個對話，訊息已經幫你打好，
+  你撳個 send 就真正送到。
+</p>
+
+<figure>
+  <img class="shot" src="assets/svg/flow-wishlist.svg"
+       alt="許願表流程圖：你填表 → 撳送出 → 砌成一句訊息 → 開 Telegram（訊息已打好）→ 你撳 send → 助理收到">
+  <figcaption class="small">
+    重點：<strong>冇第三方表格服務</strong>。你填嘅內容唔會經過
+    Formspree、Google 之類嘅網站，淨係喺你部機同 Telegram 之間。
+  </figcaption>
+</figure>
+
+<div class="note">
+  <strong>管理員可以再簡化一步：</strong>
+  如果話得返助理個 Telegram 名（唔使 @），加落
+  <code>&lt;html data-telegram-bot="名"&gt;</code>，
+  按落去就會<strong>直接開助理個對話</strong>，
+  唔使喺分享選單度返揀。
+</div>
+
+<h2>七、私隱嗰半邊</h2>
 <p>
   你睇嘅呢啲頁面係公開嘅，因為入面冇任何個人資料。
   但助理<strong>點樣開口、邊啲唔會做</strong>——

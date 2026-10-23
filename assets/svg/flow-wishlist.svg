@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 480" width="620" height="480"
+     font-family="ui-monospace, 'DejaVu Sans Mono', Menlo, monospace">
+  <rect width="620" height="480" fill="#12110f"/>
+
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#e8a33d"/>
+    </marker>
+  </defs>
+
+  <text x="20" y="28" fill="#e8a33d" font-size="14">許願表：你撳一下之後發生咩事</text>
+
+  <g stroke="#e8a33d" stroke-width="1.6" fill="none" marker-end="url(#ah)">
+    <path d="M 156 66  L 156 92"/>
+    <path d="M 156 126 L 156 152"/>
+    <path d="M 156 186 L 156 212"/>
+    <path d="M 156 246 L 156 272"/>
+    <path d="M 156 306 L 156 332"/>
+  </g>
+
+  <g fill="#1a1815" stroke="#4a443c" stroke-width="1.2">
+    <rect x="26" y="30"  width="260" height="36" rx="6"/>
+    <rect x="26" y="92"  width="260" height="34" rx="6"/>
+    <rect x="26" y="152" width="260" height="34" rx="6"/>
+    <rect x="26" y="212" width="260" height="34" rx="6"/>
+    <rect x="26" y="272" width="260" height="34" rx="6"/>
+    <rect x="26" y="332" width="260" height="34" rx="6"/>
+  </g>
+
+  <g fill="#e8a33d">
+    <circle cx="46" cy="48" r="11"/><circle cx="46" cy="109" r="11"/>
+    <circle cx="46" cy="169" r="11"/><circle cx="46" cy="229" r="11"/>
+    <circle cx="46" cy="289" r="11"/><circle cx="46" cy="349" r="11"/>
+  </g>
+  <g fill="#12110f" font-size="12" text-anchor="middle" font-weight="bold">
+    <text x="46" y="52">1</text><text x="46" y="113">2</text>
+    <text x="46" y="173">3</text><text x="46" y="233">4</text>
+    <text x="46" y="293">5</text><text x="46" y="353">6</text>
+  </g>
+
+  <g fill="#e8e4dc" font-size="12">
+    <text x="66" y="52">你填表：邊個、要咩、幾想要</text>
+    <text x="66" y="113">撳「砌好，撳我送出」</text>
+    <text x="66" y="173">砌成一句說話</text>
+    <text x="66" y="233">叫醒 Telegram</text>
+    <text x="66" y="293">訊息已經幫你打好</text>
+    <text x="66" y="353">你撳個 send → 助理收到</text>
+  </g>
+
+  <!-- what the assembled message looks like -->
+  <g>
+    <rect x="322" y="152" width="278" height="126" rx="6"
+          fill="#0d0f12" stroke="#2e2a24" stroke-width="1"/>
+    <text x="336" y="172" fill="#4fd0c4" font-size="10.5">砌好嘅訊息大概係咁</text>
+    <g font-size="10.5" fill="#e8e4dc">
+      <text x="336" y="194">【許願】</text>
+      <text x="336" y="212">邊個：細女</text>
+      <text x="336" y="230">想要：影張相就記低做咗咩</text>
+      <text x="336" y="248">原因：唔想打字</text>
+      <text x="336" y="266">幾想要：5/5</text>
+    </g>
+    <path d="M 312 200 L 322 200" stroke="#4fd0c4" stroke-width="1.2"
+          stroke-dasharray="3 3" fill="none"/>
+  </g>
+
+  <!-- the honest caveat -->
+  <g>
+    <rect x="322" y="300" width="278" height="132" rx="6"
+          fill="#1a1410" stroke="#e8a33d" stroke-width="1.2"/>
+    <text x="336" y="320" fill="#e8a33d" font-size="10.5">要記住一件事</text>
+    <g fill="#a09a8e" font-size="10.5">
+      <text x="336" y="342">GitHub Pages 本身<tspan fill="#e8a33d">收唔到</tspan></text>
+      <text x="336" y="358">表格 —— 佢只係放檔案俾人睇，</text>
+      <text x="336" y="374">冇伺服器可以接你撳落嗰一下。</text>
+      <text x="336" y="396">所以真正送出嘅<tspan fill="#e8a33d">永遠係你</tspan></text>
+      <text x="336" y="412">撳個 send 嗰一下。唔撳就未送。</text>
+    </g>
+  </g>
+
+  <text x="26" y="404" fill="#4fd0c4" font-size="10.5">
+    好處：你填嘅嘢唔會經過任何第三方表格網站。
+  </text>
+  <text x="26" y="426" fill="#a09a8e" font-size="10.5">
+    淨係喺你部機同 Telegram 之間。
+  </text>
+  <text x="26" y="458" fill="#4a443c" font-size="10">
+    由助理自動畫成 SVG。
+  </text>
+</svg>

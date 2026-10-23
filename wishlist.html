@@ -128,25 +128,116 @@
 <p>管理員會開一個試用頻道，同埋實測粵語準確度。</p>
 
 <h2>許願表</h2>
-<p>想唔想出聲都可以填。欄位隨便 —— 最重要係<strong>講想要咩</strong>。</p>
+<p>
+  下面呢個表淨係用嚟<strong>砌好一句說話</strong>，
+  按下去會跳去 Telegram，你撳個 send 就送到。
+  <strong>你填嘅嘢唔會經過任何第三方網站</strong>，全程淨係喺你部機同 Telegram 之間。
+</p>
 
-<table>
-  <tr><th>邊個</th><th>想要咩功能</th><th>點解想要</th><th>幾想要（1-5）</th></tr>
-  <tr><td style="color:var(--ink-dim)">例如：細女</td>
-      <td style="color:var(--ink-dim)">語音輸入</td>
-      <td style="color:var(--ink-dim)">唔想打字</td>
-      <td style="color:var(--ink-dim)">5</td></tr>
-  <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
-  <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
-  <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
-  <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
-</table>
+<form id="wish" class="wishform" autocomplete="off">
+  <div class="field">
+    <label for="who">邊個想要</label>
+    <select id="who">
+      <option value="">揀一個</option>
+      <option>大女</option>
+      <option>細女</option>
+      <option>媽媽</option>
+      <option>社工媽媽</option>
+    </select>
+  </div>
+
+  <div class="field">
+    <label for="what">想要咩功能</label>
+    <input id="what" type="text" maxlength="60"
+           placeholder="例如：影張相就記低今日做咗咩">
+  </div>
+
+  <div class="field">
+    <label for="why">點解想要 <span class="opt">（唔填都得）</span></label>
+    <textarea id="why" rows="2" maxlength="200"
+              placeholder="唔打字就快好多／想睇清楚啲⋯⋯"></textarea>
+  </div>
+
+  <div class="field">
+    <label for="how">幾想要</label>
+    <div class="stars" id="how">
+      <label><input type="radio" name="how" value="1"><span>1</span></label>
+      <label><input type="radio" name="how" value="2"><span>2</span></label>
+      <label><input type="radio" name="how" value="3"><span>3</span></label>
+      <label><input type="radio" name="how" value="4"><span>4</span></label>
+      <label><input type="radio" name="how" value="5"><span>5</span></label>
+    </div>
+  </div>
+
+  <button type="submit" class="send">砌好，撳我送出</button>
+  <p class="tiny" id="preview"></p>
+</form>
 
 <div class="note">
-  <strong>填完點算？</strong>
-  影張相 send 畀助理，或者直接同助理講。
-  佢會記低、更新呢頁，然後話你知排到第幾位。
+  <strong>撳下去之後</strong>
+  Telegram 會開一個對話，訊息已經幫你打好。
+  你只需要<strong>撳個 send</strong>，就收咗。
+  助理會記低、更新呢頁，然後話你知排到第幾位。
 </div>
+
+<script>
+// The form does not submit anywhere on its own: GitHub Pages serves static
+// files only, so there is no server to receive a POST. Instead we assemble the
+// answers into one message and hand it to Telegram's share URL, which opens
+// the chat with the text already typed. The user taps send. Nothing about the
+// request passes through a third-party form service.
+(function () {
+  // Set by the admin to the agent's Telegram username, without the leading @.
+  // If it is not set we fall back to Telegram's share dialog, which needs no
+  // configuration and costs the user one extra tap (picking the chat).
+  var BOT = document.documentElement.dataset.telegramBot || "";
+  var form = document.getElementById("wish");
+  var preview = document.getElementById("preview");
+
+  function collect() {
+    var who = document.getElementById("who").value;
+    var what = document.getElementById("what").value.trim();
+    var why = document.getElementById("why").value.trim();
+    var how = form.querySelector('input[name="how"]:checked');
+    var lines = ["【許願】"];
+    if (who) lines.push("邊個：" + who);
+    if (what) lines.push("想要：" + what);
+    if (why) lines.push("原因：" + why);
+    if (how) lines.push("幾想要：" + how.value + "/5");
+    return lines.join("\n");
+  }
+
+  function validate() {
+    if (!document.getElementById("who").value) {
+      return "請先揀「邊個想要」。";
+    }
+    if (!document.getElementById("what").value.trim()) {
+      return "請填「想要咩功能」，一句話就得。";
+    }
+    return "";
+  }
+
+  form.addEventListener("submit", function (ev) {
+    ev.preventDefault();
+    var problem = validate();
+    if (problem) { preview.textContent = problem; return; }
+
+    var text = collect();
+    var url;
+    if (BOT) {
+      // Straight to the agent's chat, text pre-typed.
+      url = "https://t.me/" + BOT + "?text=" + encodeURIComponent(text);
+      preview.textContent = "開緊 Telegram⋯⋯";
+    } else {
+      // Share sheet: the user picks the assistant chat themselves.
+      url = "https://t.me/share/url?url=" + encodeURIComponent(location.href) +
+            "&text=" + encodeURIComponent(text);
+      preview.textContent = "開緊 Telegram⋯⋯ 揀「家庭 AI 助理」就得。";
+    }
+    window.location.href = url;
+  });
+})();
+</script>
 
 <h2>一啲可能有人想，但未有人講過</h2>
 <p>助理能力範圍內，但暫時冇人提出：</p>

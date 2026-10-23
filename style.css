@@ -53,6 +53,30 @@
     padding:14px 18px;margin:20px 0;font-size:14px;color:var(--ink-dim)}
   .note strong{color:var(--ink)}
 
+  .wishform{max-width:520px;margin:20px 0}
+  .field{margin:0 0 18px}
+  .field label{display:block;font-size:13px;color:var(--ink-dim);margin:0 0 6px}
+  .field .opt{opacity:.6}
+  .wishform input[type=text],.wishform textarea,.wishform select{
+    width:100%;padding:10px 12px;font-size:15px;font-family:inherit;
+    color:var(--ink);background:var(--paper);
+    border:1px solid var(--line);border-radius:6px}
+  .wishform input[type=text]:focus,.wishform textarea:focus,.wishform select:focus{
+    outline:none;border-color:var(--amber)}
+  .wishform textarea{resize:vertical}
+  .stars{display:flex;gap:8px}
+  .stars label{cursor:pointer}
+  .stars input{position:absolute;opacity:0;pointer-events:none}
+  .stars span{display:block;width:44px;height:44px;line-height:42px;
+    text-align:center;font-size:16px;color:var(--ink-dim);
+    border:1px solid var(--line);border-radius:6px;background:var(--paper)}
+  .stars input:checked+span{border-color:var(--amber);color:var(--amber)}
+  .stars input:focus-visible+span{outline:2px solid var(--amber);outline-offset:2px}
+  .wishform .send{width:100%;padding:14px;font-size:16px;font-family:inherit;
+    color:var(--paper);background:var(--amber);border:0;border-radius:6px;
+    cursor:pointer;font-weight:600}
+  .wishform .send:hover{filter:brightness(1.08)}
+  .wishform .tiny{min-height:1.2em;margin:10px 0 0;font-size:13px;color:var(--amber)}
   table{border-collapse:collapse;width:100%;margin:20px 0;font-size:14px}
   th,td{border:1px solid var(--line);padding:8px 12px;text-align:left}
   th{color:var(--amber);font-weight:400}

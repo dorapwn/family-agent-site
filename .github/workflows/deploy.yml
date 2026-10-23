@@ -45,7 +45,7 @@ jobs:
                    home.html work.html fun.html wishlist.html 404.html \
                    assets/four-rooms.mp4 assets/svg/mock-scores.svg \
                    assets/svg/flow-capture.svg assets/svg/flow-publish.svg \
-                   assets/svg/flow-ascii.svg; do
+                   assets/svg/flow-ascii.svg assets/svg/flow-wishlist.svg; do
             c=$(curl -s -o /dev/null -w '%{http_code}' "$url/$p")
             echo "  HTTP $c  /$p"
             test "$c" = "200" || { echo "FAILED: /$p"; exit 1; }
