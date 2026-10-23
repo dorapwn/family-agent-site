@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>小技巧 — 家庭 AI 助理</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="kicker">TIPS · 小技巧</div>
+  <h1>兩個好有用嘅小技巧</h1>
+  <p class="sub">
+    畫圖同做短片，唔係用畫圖軟件，係用幾行「文字」寫出嚟。
+    學識咗呢兩招，你自己都做得到。
+  </p>
+</header>
+
+<nav class="card" style="margin:28px 0;padding:14px 20px">
+  <a href="index.html">← 返主頁</a> ·
+  <a href="study.html">學業</a> ·
+  <a href="home.html">家務</a> ·
+  <a href="work.html">工作</a> ·
+  <a href="fun.html">玩樂</a> ·
+  <a href="tips.html">小技巧</a> ·
+  <a href="trouble.html">常見問題</a> ·
+  <a href="telegram.html">裝 Telegram</a> ·
+  <a href="wishlist.html">許願清單</a> ·
+  <a href="behind.html">幕後</a>
+</nav>
+
+<details class="toc">
+  <summary>呢頁有咩</summary>
+  <ol>
+    <li><a href="#一-畫圖-svg">一、畫圖：SVG</a></li>
+    <li><a href="#二-短片-ascii-動畫">二、短片：ASCII 動畫</a></li>
+    <li><a href="#一句記住">一句記住</a></li>
+  </ol>
+</details>
+
+<h2 id="一-畫圖-svg" style="border-top:none">一、畫圖：SVG</h2>
+
+<p>
+  <a href="study.html">學業指南</a> 入面嗰張分數趨勢圖，
+  唔係用畫圖軟件畫——係助理<strong>直接寫成代碼</strong>，
+  每一條線、每一個點、每一個字都由文字描述。
+</p>
+
+<p>
+  呢個格式叫 SVG。佢最大嘅優點係
+  <strong>放大都唔會模糊</strong>，
+  所以印出嚟貼喺雪櫃、擺喺學校報告都仲係清楚。
+</p>
+
+<figure>
+  <img class="shot" src="assets/svg/mock-scores.svg" alt="模擬考分數趨勢折線圖">
+  <figcaption class="small">
+    原始碼喺
+    <a href="https://github.com/dorapwn/family-agent-site/blob/main/assets/svg/mock-scores.svg"
+       target="_blank" rel="noopener">GitHub 上面</a>——
+    開個 browser 打開就見到全部代碼。
+  </figcaption>
+</figure>
+
+<h3>改圖唔使重畫</h3>
+<p>
+  因為佢係代碼，助理可以只改其中一兩行。
+  你講「深啲」、「加多一條⋯⋯」，佢改完即刻 publish，
+  <strong>但個網址唔變</strong>。
+</p>
+
+<div class="prompt">
+  <b>「用我今次嘅分數畫張趨勢圖」</b><br>
+  <b>「畫張圖，深色啲，紙張底色」</b><br>
+  <b>「加多一條平均線」</b>
+</div>
+
+<h2 id="二-短片-ascii-動畫">二、短片：ASCII 動畫</h2>
+
+<p>主頁頂部嗰條 20 秒嘅動畫，做法同 SVG 類似，都係寫代碼出嚟。</p>
+
+<h3>點解字可以郁？</h3>
+<figure>
+  <img class="shot" src="assets/svg/flow-ascii.svg"
+       alt="ASCII 動畫流程圖：算亮度地圖 → 配符號 → 貼色 → 加掃描線光暈雜訊 → 砌成一格重複 480 次 → 出 MP4">
+  <figcaption class="small">
+    每一步喺每一格重複 480 次。
+    <a href="https://github.com/dorapwn/family-agent-site/blob/main/assets/svg/flow-ascii.svg"
+       target="_blank" rel="noopener">SVG 原始碼（GitHub）</a>
+  </figcaption>
+</figure>
+
+<p>詳細講：</p>
+<ol>
+  <li>用數學算出一個「亮度地圖」——
+      每一格該著幾多光（0 到 1）</li>
+  <li>亮度越高，就配一個更實心嘅符號
+      （空格 → <code>.</code> → <code>o</code> → <code>@</code> → 實心方塊）</li>
+  <li>貼上顏色（每個場景有唔同色系）</li>
+  <li>加掃描線、halo（光暈）、雜訊、邊緣變色，做出舊 CRT 螢幕感</li>
+</ol>
+
+<div class="note">
+  <strong>五個場景，五種唔同花色：</strong>
+  <ul style="margin:8px 0 0">
+    <li><strong>學業</strong> — 青綠色，符號向下流動，似答題時嘅感覺</li>
+    <li><strong>家務</strong> — 琥珀色，一圈圈擴散，似屋企嘅暖光</li>
+    <li><strong>工作</strong> — 鋼藍色，橫掃線，似報表</li>
+    <li><strong>玩樂</strong> — 紫紅色，扭動嘅曲線，純粹亂郁</li>
+    <li><strong>尾</strong> — 四種疊埋一齊，四個人變成一個腦</li>
+  </ul>
+</div>
+
+<p>
+  全部 480 格係平行計，同時跑，大概 4 分鐘出片。
+</p>
+
+<p>
+  原始碼喺
+  <a href="https://github.com/dorapwn/family-agent-site/blob/main/assets/ascii/four_rooms.py"
+     target="_blank" rel="noopener">GitHub 上面</a>。
+  想改顏色、改節奏、改符號——改幾行數就得。
+</p>
+
+<div class="prompt">
+  <b>「做段 ASCII 動畫，講⋯⋯」</b><br>
+  <b>「用洋紅色，郁慢啲」</b>
+</div>
+
+<h2 id="一句記住">一句記住</h2>
+
+<div class="note">
+  <strong>呢兩招嘅共通點：</strong>
+  成品係<strong>文字寫出嚟</strong>，唔係用滑鼠拖出嚟。
+  所以改一個位唔使由頭做過， 而且放大都唔會花。
+</div>
+
+<footer>
+  <p><a href="index.html">← 返主頁</a></p>
+</footer>
+</div>
+</body>
+</html>

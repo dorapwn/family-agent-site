@@ -23,13 +23,24 @@
   <a href="home.html">家務</a> ·
   <a href="work.html">工作</a> ·
   <a href="fun.html">玩樂</a> ·
+  <a href="tips.html">小技巧</a> ·
   <a href="trouble.html">常見問題</a> ·
   <a href="telegram.html">裝 Telegram</a> ·
   <a href="wishlist.html">許願清單</a> ·
   <a href="behind.html">幕後</a>
 </nav>
 
-<h2 style="border-top:none">一、影網頁：headless browser 係咩？</h2>
+<details class="toc">
+  <summary>呢頁有咩</summary>
+  <ol>
+    <li><a href="#一-影網頁-headless-browser-係咩">一、影網頁：headless browser 係咩？</a></li>
+    <li><a href="#二-網頁本身">二、網頁本身</a></li>
+    <li><a href="#三-許願表-表格點樣送得到">三、許願表：表格點樣送得到</a></li>
+    <li><a href="#想自己試">想自己試？</a></li>
+  </ol>
+</details>
+
+<h2 id="一-影網頁-headless-browser-係咩" style="border-top:none">一、影網頁：headless browser 係咩？</h2>
 
 <p>
   你喺 <a href="study.html">學業指南</a> 或者 <a href="fun.html">玩樂指南</a>
@@ -85,84 +96,7 @@
   </figcaption>
 </figure>
 
-<h2>二、畫圖：SVG</h2>
-<p>
-  <a href="study.html">學業指南</a> 入面嗰張分數趨勢圖，
-  唔係用畫圖軟件畫——係助理<strong>直接寫成代碼</strong>，
-  每一條線、每一個點、每一個字都由文字描述。
-</p>
-
-<p>
-  呢個格式叫 SVG。佢最大嘅優點係
-  <strong>放大都唔會模糊</strong>，
-  所以印出嚟貼喺雪櫃、擺喺學校報告都仲係清楚。
-</p>
-
-<figure>
-  <img class="shot" src="assets/svg/mock-scores.svg" alt="模擬考分數趨勢折線圖">
-  <figcaption class="small">
-    原始碼喺
-    <a href="https://github.com/dorapwn/family-agent-site/blob/main/assets/svg/mock-scores.svg"
-       target="_blank" rel="noopener">GitHub 上面</a>——
-    開個 browser 打開就見到全部代碼。
-  </figcaption>
-</figure>
-
-<h3>改圖唔使重畫</h3>
-<p>
-  因為佢係代碼，助理可以只改其中一兩行。
-  你講「深啲」、「加多一條⋯⋯」，佢改完即刻 publish，
-  <strong>但個網址唔變</strong>。
-</p>
-
-<h2>三、短片：ASCII 動畫</h2>
-
-<p>主頁頂部嗰條 20 秒嘅動畫，做法同 SVG 類似，都係寫代碼出嚟。</p>
-
-<h3>點解字可以郁？</h3>
-<figure>
-  <img class="shot" src="assets/svg/flow-ascii.svg"
-       alt="ASCII 動畫流程圖：算亮度地圖 → 配符號 → 貼色 → 加掃描線光暈雜訊 → 砌成一格重複 480 次 → 出 MP4">
-  <figcaption class="small">
-    每一步喺每一格重複 480 次。
-    <a href="https://github.com/dorapwn/family-agent-site/blob/main/assets/svg/flow-ascii.svg"
-       target="_blank" rel="noopener">SVG 原始碼（GitHub）</a>
-  </figcaption>
-</figure>
-
-<p>詳細講：</p>
-<ol>
-  <li>用數學算出一個「亮度地圖」——
-      每一格該著幾多光（0 到 1）</li>
-  <li>亮度越高，就配一個更實心嘅符號
-      （空格 → <code>.</code> → <code>o</code> → <code>@</code> → 實心方塊）</li>
-  <li>貼上顏色（每個場景有唔同色系）</li>
-  <li>加掃描線、halo（光暈）、雜訊、邊緣變色，做出舊 CRT 螢幕感</li>
-</ol>
-
-<div class="note">
-  <strong>五個場景，五種唔同花色：</strong>
-  <ul style="margin:8px 0 0">
-    <li><strong>學業</strong> — 青綠色，符號向下流動，似答題時嘅感覺</li>
-    <li><strong>家務</strong> — 琥珀色，一圈圈擴散，似屋企嘅暖光</li>
-    <li><strong>工作</strong> — 鋼藍色，橫掃線，似報表</li>
-    <li><strong>玩樂</strong> — 紫紅色，扭動嘅曲線，純粹亂郁</li>
-    <li><strong>尾</strong> — 四種疊埋一齊，四個人變成一個腦</li>
-  </ul>
-</div>
-
-<p>
-  全部 480 格係平行計，同時跑，大概 4 分鐘出片。
-</p>
-
-<p>
-  原始碼喺
-  <a href="https://github.com/dorapwn/family-agent-site/blob/main/assets/ascii/four_rooms.py"
-     target="_blank" rel="noopener">GitHub 上面</a>。
-  想改顏色、改節奏、改符號——改幾行數就得。
-</p>
-
-<h2>四、網頁本身</h2>
+<h2 id="二-網頁本身">二、網頁本身</h2>
 
 <p>
   呢四頁指南（加呢頁）全部係助理寫嘅 HTML。
@@ -200,7 +134,7 @@
   唔準再犯。
 </div>
 
-<h2>六、許願表：表格點樣送得到</h2>
+<h2 id="三-許願表-表格點樣送得到">三、許願表：表格點樣送得到</h2>
 
 <p>
   你可能會問：GitHub Pages 淨係得啲檔案，<strong>表格填完送去邊？</strong>
@@ -237,21 +171,7 @@
   唔使喺分享選單度返揀。
 </div>
 
-<h2>七、私隱嗰半邊</h2>
-<p>
-  你睇嘅呢啲頁面係公開嘅，因為入面冇任何個人資料。
-  但助理<strong>點樣開口、邊啲唔會做</strong>——
-  例如唔會寫 essay、唔會就醫療俾建議——
-  呢啲設定喺另一個<strong>私人</strong> repository，
-  唔會公開。
-</p>
-
-<p>
-  分開係有原因：語氣規則入面會提到成員嘅習慣同埋工作細節，
-  呢啲<strong>唔應該</strong>出現喺公開網頁。
-</p>
-
-<h2>想自己試？</h2>
+<h2 id="想自己試">想自己試？</h2>
 <div class="prompt">
   <b>「幫我影一張 HKEAA 網頁截圖」</b><br>
   <b>「用我嘅分數畫張圖」</b><br>

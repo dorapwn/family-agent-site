@@ -27,6 +27,11 @@ jobs:
       - name: Structural page check
         run: python3 scripts/check_pages.py
 
+      # The TOC is generated from the headings, so it can only go stale if
+      # someone adds an <h2> and skips the generator. This fails instead.
+      - name: Table of contents up to date
+        run: python3 scripts/add_toc.py --check
+
       # Browser tests for the wishlist form. Both paths are exercised: the
       # Telegram handoff used today, and the Supabase POST used once an admin
       # configures it. The Supabase suite stands up its own PostgREST stub, so

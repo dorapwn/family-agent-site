@@ -40,7 +40,8 @@ ASSETS = ["assets/four-rooms.mp4", "assets/img/poster.png",
 # they are what a user came for; behind-the-scenes is last because it is the
 # one page they never need.
 NAV_ORDER = ["index.html", "study.html", "home.html", "work.html", "fun.html",
-             "trouble.html", "telegram.html", "wishlist.html", "behind.html"]
+             "tips.html", "trouble.html", "telegram.html", "wishlist.html",
+             "behind.html"]
 NAV_PAGES = NAV_ORDER
 
 errors: list[str] = []
