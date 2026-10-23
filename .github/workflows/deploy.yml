@@ -32,10 +32,20 @@ jobs:
           for f in assets/four-rooms.mp4 assets/img/poster.png \
                    assets/img/hkeaa-dse-dates.png \
                    assets/img/hermes-voice-mode.png \
+                   assets/svg/mock-scores.svg \
                    assets/ascii/four_rooms.py; do
             test -f "$f" || { echo "ERROR: missing $f"; exit 1; }
           done
           echo "asset check passed"
+
+      - name: SVG must be well-formed
+        run: |
+          set -euo pipefail
+          for f in assets/svg/*.svg; do
+            python3 -c "import xml.dom.minidom,sys; xml.dom.minidom.parse('$f')" \
+              || { echo "ERROR: $f is not valid XML"; exit 1; }
+          done
+          echo "svg check passed"
 
       - name: Guard against Markdown syntax leaking into HTML
         run: |
