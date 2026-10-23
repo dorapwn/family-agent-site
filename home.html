@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>家務指南 — 家庭 AI 助理</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="kicker">02 / HOME · 家務</div>
+  <h1>朝早七點，一段字</h1>
+  <p class="sub">
+    呢份指南嘅對象，係每日要處理好多瑣碎嘢、但唔想開四個 app 睇行程嘅人。
+  </p>
+</header>
+
+<nav class="card" style="margin:28px 0;padding:14px 20px">
+  <a href="index.html">← 返主頁</a> ·
+  <a href="study.html">學業</a> ·
+  <a href="work.html">工作</a> ·
+  <a href="fun.html">玩樂</a>
+</nav>
+
+<h2>每日簡報</h2>
+<p>朝早 7 點，助理會 push 一段文字上嚟。淨係咁，冇commentary、冇鼓勵說話、冇裝飾 emoji。</p>
+
+<div class="prompt" style="border-left-color:var(--amber)">
+  <b>今日 (日期)</b><br>
+  · 大女：…<br>
+  · 小女：…<br>
+  · 屋企：…<br>
+  · 買嘢：…<br>
+  · 天氣：落雨就寫
+</div>
+
+<p>如果你已經有日曆，助理會讀埋學校的活動時間。唔使你手動抄。</p>
+
+<h2>睇雪櫃</h2>
+<p>影張相就得。佢會話你知有咩。</p>
+<div class="prompt">
+  <b>（影雪櫃相）雪櫃有咩？</b>
+</div>
+
+<h2>今晚食咩</h2>
+<p>唔好問「有咩食譜」——會得到十個 recipe 但一樣都唔會煮。
+要問「用而家呢啲可以做咩」：</p>
+<div class="prompt">
+  <b>（影相）今晚可以做咩？</b>
+</div>
+<p>佢會俾<strong>兩個</strong>方案（唔係十個），然後你揀。
+揀咗之後自動出購物清單。</p>
+
+<div class="note">
+  <strong>點解只有兩個？</strong> 因為俾十個選項等於俾零個。
+  呢個係寫死喺設定入面嘅——助理唔會一次過俾十個建議。
+</div>
+
+<h2>購物清單</h2>
+<div class="prompt">
+  <b>「購物清單加豬扒」</b><br>
+  <b>「今日買晒」</b><br>
+  <b>（影街市價錢表）同上次比，邊啲貴咗」</b>
+</div>
+<p>清單會記住你嘅週期採購：雞蛋、廁紙、清潔劑、蔬果。
+唔使每個禮拜重新講一次。</p>
+
+<h2>行程問題</h2>
+<div class="prompt">
+  <b>「小朋友幾點放學？」</b><br>
+  <b>「聽日要帶咩嘢返學？」</b><br>
+  <b>「今日天氣點？要唔要帶遮？」</b>
+</div>
+
+<h2>唔會幫你做嘅決定</h2>
+<div class="warn">
+  助理<strong>唔會</strong>話你聽應該點教小朋友。
+  呢個係你嘅角色，唔係工具嘅角色。
+  <br><br>
+  同樣，佢唔會建議你用代餐取代正餐。
+</div>
+
+<h2>語氣提醒：唔使禮貌</h2>
+<p>你唔需要講「請」「唔該」「多謝」。有嘢講就會開始。
+助理唔會因為禮貌程度改變態度。</p>
+<p>出錯嗰陣，直接講「錯咗，應該係⋯⋯」。佢會即刻改。
+唔會apologize十次，講一次「搞錯咗，已經改」就夠。</p>
+
+<h2>想試下新花樣</h2>
+<div class="prompt">
+  <b>（影超市傳單）呢啲⋯⋯做唔做到？」</b>
+</div>
+<p>再進階啲：</p>
+<div class="prompt">
+  <b>「幫我起個網頁，係下個月屋企聚餐，
+  有六個人，要收集大家唔食咩」</b>
+</div>
+<p>出嚟之後改內容，講「加⋯⋯」、「改⋯⋯」就得。同一個流程喺
+<a href="study.html">學業指南</a>有詳細講。</p>
+
+<footer>
+  <p><a href="index.html">← 返主頁</a></p>
+</footer>
+</div>
+</body>
+</html>

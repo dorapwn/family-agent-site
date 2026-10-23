@@ -1,0 +1,6 @@
+.DS_Store
+node_modules/
+*.log
+# render artifacts — only the final mp4 is committed
+assets/ascii/*.mp4
+assets/ascii/__pycache__/

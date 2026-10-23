@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>玩樂指南 — 家庭 AI 助理</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="kicker">04 / FUN · 玩樂</div>
+  <h1>用工具玩，唔係用工具做嘢</h1>
+  <p class="sub">
+    前三份指南講點樣用助理慳時間。呢份講點樣用佢<strong>整嘢</strong>——
+    影片、網站、動畫。呢啲係攞嚟玩同攞嚟交功課嘅。
+  </p>
+</header>
+
+<nav class="card" style="margin:28px 0;padding:14px 20px">
+  <a href="index.html">← 返主頁</a> ·
+  <a href="study.html">學業</a> ·
+  <a href="home.html">家務</a> ·
+  <a href="work.html">工作</a>
+</nav>
+
+<h2>最吸睛嘅：ASCII 動畫</h2>
+<p>
+  主頁頂部嗰條片，唔係剪輯出嚟嘅。每一格文字都係助理用數學算出嚟——
+  用幾何場決定邊啲位置「亮」，用符號表決定該顯示咩字。
+  仲有 CRT 掃描線、bloom、雜訊、邊緣色散。
+</p>
+
+<figure class="hero" style="border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#0a0a0c;margin:24px 0">
+  <video controls muted loop playsinline poster="assets/img/poster.png" style="display:block;width:100%">
+    <source src="assets/four-rooms.mp4" type="video/mp4">
+  </video>
+  <figcaption style="font-size:12px;color:var(--ink-dim);padding:10px 14px;border-top:1px solid var(--line);background:var(--card)">
+    四個房間 / Four Rooms — 20 秒，1280×720，20fps。480 格。
+  </figcaption>
+</figure>
+
+<div class="prompt">
+  <b>「幫我做一段 ASCII 動畫，講⋯⋯」</b>
+</div>
+
+<p>你可以要求嘅風格：</p>
+<ul>
+  <li>「賽博／故障風」</li>
+  <li>「日系可愛符號」</li>
+  <li>「模仿音樂 visualiser」</li>
+  <li>「用中文字做符號」</li>
+  <li>「改成粉紅色，夢幻啲」</li>
+</ul>
+
+<p>原始碼就喺 <a href="assets/ascii/four_rooms.py">assets/ascii/four_rooms.py</a>，
+隨便你睇——想改顏色、想改節奏，改個數就得。</p>
+
+<h2>起網頁（社團、活動、任何嘢）</h2>
+<p>呢個可能係最實用嘅玩樂功能，因為成果係可以攞去用嘅。</p>
+
+<div class="prompt">
+  <b>「幫我起個網站，係⋯⋯」</b>
+</div>
+
+<h3>完整流程</h3>
+<ol>
+  <li>你描述想要咩，或者直接丟一張傳單／海報相畀佢</li>
+  <li>助理讀相，抽出日期地點</li>
+  <li>助理寫網頁、出圖、push 上 GitHub</li>
+  <li>攞到 link，你 share 落 WhatsApp</li>
+  <li>之後想改，直接講</li>
+</ol>
+
+<h3>幾個實際例子</h3>
+<div class="prompt">
+  <b>義工活動報名頁</b>（要表格：要姓名、電話、email、可用時段）<br>
+  <b>社團周年活動頁</b>（相片牆 + 報名）<br>
+  <b>生日派對邀請</b>（一頁，倒數）<br>
+  <b>讀書會宣傳頁</b>（書單 + 時間地點）
+</div>
+
+<h3>上載圖片</h3>
+<p>直接影相傳過去就得。助理會：</p>
+<ul>
+  <li>睇相，抄出上面嘅文字（傳單、日期）</li>
+  <li>將相裁到啱尺寸放入網頁</li>
+  <li>需要縮圖嘅話自動生成</li>
+</ul>
+
+<div class="note">
+  <strong>影相要覆核。</strong> AI 睇相認字會認錯，尤其係手寫同細字。
+  助理抽出嘅日期地名，一定要你自己睇一次。
+  呢一步唔好跳。
+</div>
+
+<h3>改嘢</h3>
+<div class="prompt">
+  <b>「標題改咗做⋯⋯」</b><br>
+  <b>「加一個倒數」</b><br>
+  <b>「背景太花，簡單啲」</b><br>
+  <b>「加段字：⋯⋯」</b><br>
+  <b>（再影一張相） 「換呢張做主視覺」</b>
+</div>
+<p>每次改完即刻 publish。link 唔變，refresh 就見到。</p>
+
+<h2>從網頁攞圖</h2>
+<p>助理可以自己去網頁影圖返嚟用。</p>
+<div class="prompt">
+  <b>「幫我上載呢個網站嗰張圖」</b><br>
+  <b>「搵下HKEAA文憑試時間表，影張圖落去」</b>
+</div>
+
+<figure>
+  <img class="shot" src="assets/img/hermes-voice-mode.png" alt="助理語音模式說明頁面截圖">
+  <figcaption class="small">
+    呢張圖係助理用 headless browser 自己影嘅 ——
+    開一個無頭瀏覽器、去指定網址、影相、存低。
+    <a href="study.html">學業指南</a> 都有引用官方資料截圖，做法一樣。
+  </figcaption>
+</figure>
+
+<h2>其他可以玩嘅</h2>
+<div class="prompt">
+  <b>「幫我做張ASCII頭像」</b><br>
+  <b>「將呢張相變成ASCII art」</b><br>
+  <b>「做張海報出嚟」</b><br>
+  <b>（送片歌） 「幫我做段音樂視覺動畫」</b>
+</div>
+
+<h2>一句提醒</h2>
+<div class="warn">
+  呢啲係工具，唔係代勞。
+  社團要起網頁，助理幫你砌，<strong>但內容要你睇</strong>——
+  日期錯咗、地點錯咗、報名表格漏咗欄，落場係你嘅事。
+</div>
+
+<h2>試吓</h2>
+<p>最直接嘅測試：叫助理幫你起一個<strong>亂拋嘅網頁</strong>。</p>
+<div class="prompt">
+  <b>「幫我起個網頁，係⋯⋯（任何你今日想咗好耐嘅嘢）」</b>
+</div>
+
+<footer>
+  <p><a href="index.html">← 返主頁</a></p>
+</footer>
+</div>
+</body>
+</html>

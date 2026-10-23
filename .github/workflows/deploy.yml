@@ -1,0 +1,63 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write   # required by actions/deploy-pages
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verify links and assets
+        run: |
+          set -euo pipefail
+          # every page must be linked from index.html
+          for p in study home work fun; do
+            grep -q "$p.html" index.html || {
+              echo "ERROR: $p.html not linked from index.html"; exit 1; }
+          done
+          # every referenced local asset must exist
+          for f in assets/four-rooms.mp4 assets/img/poster.png \
+                   assets/img/hkeaa-dse-dates.png \
+                   assets/img/hermes-voice-mode.png \
+                   assets/ascii/four_rooms.py; do
+            test -f "$f" || { echo "ERROR: missing $f"; exit 1; }
+          done
+          echo "asset check passed"
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - id: deployment
+        uses: actions/deploy-pages@v4
+
+      - name: Verify deployment
+        run: |
+          url="${{ steps.deployment.outputs.page_url }}"
+          echo "deployed to $url"
+          sleep 5
+          code=$(curl -s -o /dev/null -w '%{http_code}' "$url/")
+          echo "root: HTTP $code"
+          for p in study home work fun; do
+            c=$(curl -s -o /dev/null -w '%{http_code}' "$url/$p.html")
+            echo "$p.html: HTTP $c"
+          done
+          ac=$(curl -s -o /dev/null -w '%{http_code}' "$url/assets/four-rooms.mp4")
+          echo "video: HTTP $ac"
+          test "$code" = "200"
+          test "$ac" = "200"

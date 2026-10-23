@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>學業指南 — 家庭 AI 助理</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="kicker">01 / STUDY · 學業</div>
+  <h1>溫習有人陪，社團有人幫</h1>
+  <p class="sub">考試溫習、出題、check 答案。同埋——你係社團嘅話，活動網站都可以交俾佢起。</p>
+</header>
+
+<nav class="card" style="margin:28px 0;padding:14px 20px">
+  <a href="index.html">← 返主頁</a> ·
+  <a href="home.html">家務</a> ·
+  <a href="work.html">工作</a> ·
+  <a href="fun.html">玩樂</a>
+</nav>
+
+<h2>開始之前：咩唔會發生</h2>
+<p>助理**唔會**幫你寫essay、唔會俾你答案、唔會話「你一定得」。</p>
+<p>因為咁樣你乜都學唔到。佢會做嘅係話你知錯喺邊一步，然後出多題同類俾你。</p>
+
+<div class="warn">
+  <b>界線：</b>如果你要求佢直接寫答案俾你交，佢會拒絕，並且解釋點解。
+  呢個唔係佢唔聽話，係呢條規則寫死咗喺佢個設定入面。
+</div>
+
+<h2>四個最常用嘅玩法</h2>
+
+<h3>1. Check 你份答案</h3>
+<p>影張相或者貼題目過去，得。佢會逐題指出錯喺邊一步。</p>
+<div class="prompt">
+  <b>「我做咗呢科，你 check 我答案同埋話我知錯喺邊步」</b>
+  <br>（跟住影相／貼題目）
+</div>
+
+<h3>2. 出題</h3>
+<div class="prompt">
+  <b>「出三條數學題，中四程度，唔好出答案」</b>
+</div>
+<p>想試難啲就講「難啲」，想簡單就講「簡單啲」。</p>
+
+<h3>3. 針對弱項操練</h3>
+<p>呢個係最有用嘅一個玩法。佢記得你上次錯咗邊。</p>
+<div class="prompt">
+  <b>「我今次幾何錯咗喺輔角判定，出多兩條同類俾我」</b>
+</div>
+
+<h3>4. 考試資料</h3>
+<div class="prompt">
+  <b>「2027 文憑試時間表同報名期係幾時？出官方網址」</b>
+</div>
+<div class="note">
+  <strong>佢只會引用 hkeaa.edu.hk。</strong>
+  網上有好多二手版本嘅時間表會錯（年份都會搞錯）。
+  佢寧願話「唔肯定」都唔會亂估。
+</div>
+
+<figure>
+  <img class="shot" src="assets/img/hkeaa-dse-dates.png" alt="香港考試及評核局嘅文憑試重要日期頁面截圖">
+  <figcaption class="small">
+    呢張圖係助理自己用 headless browser 影嘅，直接去 hkeaa.edu.hk 攞。
+    唔會經過任何二手網站。
+  </figcaption>
+</figure>
+
+<h2>語音：用講嘅得唔得？</h2>
+<p>得，而且通常仲快過打字。直接講：</p>
+<div class="prompt">
+  <b>「呢題點解咁寫」</b> + 影張相
+</div>
+<div class="prompt">
+  <b>「出兩條我想試嘅題目」</b>
+</div>
+<p>唔使講「請」「多謝」。有嘢講就會開始。</p>
+
+<h2>溫習時間表</h2>
+<p>傾完之後你可以問：</p>
+<div class="prompt">
+  <b>「排聽日嘅溫習時間，based on 我上次傾嘅」</b>
+</div>
+<p>佢會出時間表，你話 ok 就寫入。佢<strong>唔會</strong>自動排 —
+  咁樣你會覺得被管。</p>
+
+<h2>學英文／中文以外</h2>
+<p>出題、模擬面試、作文 feedback 都可以，公式一樣：</p>
+<div class="prompt">
+  <b>「模擬面試我一個時段，做完話我知最弱嗰個位」</b>
+</div>
+<div class="prompt">
+  <b>「呢篇作文你睇下，改嘅時候直接話我知點改，唔好重寫」</b>
+</div>
+
+<h2>社團：起活動網站</h2>
+<p>呢個係你作為學會／社團幹事最實用嘅功能。</p>
+
+<p>以前起一個活動網站要搵人寫code、要搵圖片、要識deploy。
+而家你只需要同助理講清楚活動係咩。</p>
+
+<div class="prompt">
+  <b>「幫我起一個網站，係我們社嘅義工活動，
+  日期係⋯⋯，地點⋯⋯，想有報名表格，
+  擺一張我影嘅宣傳圖上去」</b>
+  <br>（影相傳過去）
+</div>
+
+<h3>實際流程</h3>
+<ol>
+  <li>你影相傳過去（海報、傳單、舊活動相都得）</li>
+  <li>助理讀相，抽出日期地點人數</li>
+  <li>你覆核——<strong>呢步唔好跳</strong>，AI 影相認字會認錯</li>
+  <li>助理寫網頁、push 上 GitHub、攞條 link 出嚟</li>
+  <li>你 share 落 WhatsApp 群組</li>
+</ol>
+
+<div class="note">
+  <strong>呢個網站本身就係例子。</strong> 你而家睇緊呢一版，
+  就係咁樣出嚟嘅——助理寫 HTML，push，GitHub 自動 publish。
+  你叫佢起一個活動網站，流程一樣，只不過內容換咗。
+</div>
+
+<h3>想改邊度就講</h3>
+<div class="prompt">
+  <b>「標題改咗做⋯⋯」</b><br>
+  <b>「加多一個 section，講⋯⋯」</b><br>
+  <b>「張相太糊，換呢張」</b> + 影相<br>
+  <b>「幫我加個報名表格，要有 email 同電話欄」</b>
+</div>
+<p>每次改完會即刻出新版，條 link 唔變。你 refresh 就見到。</p>
+
+<h2>撞板點講</h2>
+<div class="prompt">
+  <b>「唔係，我意思係⋯⋯」</b><br>
+  <b>「答得太長，講重點」</b><br>
+  <b>「出嚟啲題太易，難啲」</b>
+</div>
+<p>唔使客氣。直接講佢就會改。呢個設計係刻意咁——，
+ 佢唔會記仇，亦都唔會觉得你冒犯。</p>
+
+<h2>你會唔會問：唔會唔會俾答案我？</h2>
+<p>會，而且應該問。佢嘅答案係：「你想知點解，定想知答案？」</p>
+<p>你話「想知點解」，佢就逐步講。如果係考試題目，佢會叫你答完先睇解釋。
+呢個係佢學唔到嘢同學得到嘢嘅分別。</p>
+
+<footer>
+  <p><a href="index.html">← 返主頁</a></p>
+</footer>
+</div>
+</body>
+</html>
