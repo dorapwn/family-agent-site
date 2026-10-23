@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>家庭 AI 助理 — 使用指南</title>
-<meta name="description" content="學業 / 家務 / 工作 / 玩樂 —— 一份使用指南，由助理自己寫，自己維護。">
+<title>家庭 AI 智能體 — 使用指南</title>
+<meta name="description" content="學業 / 家務 / 工作 / 玩樂 —— 一份使用指南，由智能體自己寫，自己維護。">
 <style>
   :root{
     --ink:#e8e4dc; --ink-dim:#a09a8e; --paper:#12110f; --card:#1a1815;
@@ -87,18 +87,16 @@
 
 <header>
   <div class="kicker">Household AI · 使用指南</div>
-  <h1>屋企有個助理</h1>
-  <p class="sub">呢份指南，係助理自己寫、自己改、自己出圖嘅。
+  <h1>屋企有個智能體</h1>
+  <p class="sub">呢份指南，係智能體自己寫、自己改、自己出圖嘅。
      你唔需要識寫程式，只需要識講嘢。</p>
 </header>
 
 <details class="toc">
   <summary>呢頁有咩</summary>
   <ol>
-    <li><a href="#揀你嘅指南">揀你嘅指南</a></li>
-    <li><a href="#點樣開始-其實唔使開始">點樣開始（其實唔使開始）</a></li>
+    <li><a href="#指南">指南</a></li>
     <li><a href="#打字定講嘢">打字定講嘢？</a></li>
-    <li><a href="#一件你可能會問嘅事">一件你可能會問嘅事</a></li>
     <li><a href="#呢個網站點樣起上嚟">呢個網站點樣起上嚟</a></li>
   </ol>
 </details>
@@ -108,7 +106,7 @@
     <source src="assets/four-rooms.mp4" type="video/mp4">
   </video>
   <figcaption>
-    四個房間 —— 四個人、四個助理、同一個腦。
+    四個房間 —— 四個人、四個智能體、同一個腦。
     呢條片每一格文字都係用數學算出嚟嘅，唔係剪輯出嚟嘅。
     <a href="https://github.com/dorapwn/family-agent-site/blob/main/assets/ascii/four_rooms.py"
        target="_blank" rel="noopener">原始碼在這裡（GitHub）</a>。
@@ -117,12 +115,22 @@
 
 <div class="note">
   <strong>呢個網站自己寫自己。</strong> 下面每一句、每一張圖、每一段短片，
-  都係助理生成之後 push 上 GitHub，GitHub Pages 自動 publish。
-  你睇到嘅呢一版，就係上一次有人（或者有嘢）同助理傾完偈之後改出嚟嘅。
+  都係智能體生成之後 push 上 GitHub，GitHub Pages 自動 publish。
+  你睇到嘅呢一版，就係上一次有人（或者有嘢）同智能體傾完偈之後改出嚟嘅。
 </div>
 
-<h2 id="揀你嘅指南">揀你嘅指南</h2>
-<p class="lede">四個人，四條路。想睇邊個身份就點。</p>
+<div class="tidbit">
+  <span class="kicker">小智識</span>
+  <p>
+    <strong>「智能體」係咩意思？</strong>
+    簡單講，係一個<strong>識自己做好多步工作</strong>嘅電腦程式。
+    你問佢一句，佢唔係即刻答你，而係自己去查資料、寫嘢、整理好先返嚟。
+    同一個智能體可以幫屋企四個人做唔同嘅事 ——
+    但<strong>佢分開記低每個人</strong>，唔會將你講過嘅嘢攞去同你妹妹講。
+  </p>
+</div>
+
+<h2 id="指南">指南</h2>
 
 <div class="grid">
   <a class="card" href="study.html">
@@ -153,7 +161,7 @@
   <a class="card" href="trouble.html">
     <div class="n">07 / HELP</div>
     <h3>常見問題</h3>
-    <p>助理唔郁？答錯？唔記得？呢度有得睇。</p>
+    <p>智能體唔郁？答錯？唔記得？呢度有得睇。</p>
   </a>
   <a class="card" href="telegram.html">
     <div class="n">08 / SETUP</div>
@@ -172,48 +180,18 @@
   </a>
 </div>
 
-<h2 id="點樣開始-其實唔使開始">點樣開始（其實唔使開始）</h2>
-<p>
-  呢個助理已經 setup 好。你要做的只有一件事：
-  打開 Telegram，搵返個對話，傾偈。
-</p>
-<div class="note">
-  <strong>Telegram 係咩？</strong>
-  就好似 WhatsApp ——
-  一個傾偈嘅 app，有對話、有群組、可以傳相、可以出聲。
-  個分別係 Telegram 通常行快啲、慳電腦D，而且免費。
-  <a href="telegram.html">教你怎么裝 Telegram →</a>
-</div>
-
-<table>
-  <tr><th>你係</th><th>搵邊個</th><th>第一步講咩</th></tr>
-  <tr><td>學生</td><td>Telegram 上面嘅 study bot</td><td>「我做完一科，你 check 下」</td></tr>
-  <tr><td>屋企人</td><td>Telegram 上面嘅 home bot</td><td>「今日要做啲咩？」</td></tr>
-  <tr><td>返工</td><td>Telegram 上面嘅 work bot</td><td>「幫我整理呢段會議記錄」</td></tr>
-</table>
-
 <h2 id="打字定講嘢">打字定講嘢？</h2>
 <p>
   <strong>暫時要打字。</strong> 語音功能仲未開通。
 </p>
 <div class="warn">
   如果你覺得打字慢、想用講嘅，
-  <strong>請喺 <a href="wishlist.html">許願清單</a> 出聲</strong>（或者直接同助理講），
+  <strong>請喺 <a href="wishlist.html">許願清單</a> 出聲</strong>（或者直接同智能體講），
   講明邊個想用語音。開通之後會通知你。
 </div>
 
-<h2 id="一件你可能會問嘅事">一件你可能會問嘅事</h2>
-<p>
-  「咁我可唔可以自己改呢啲網頁？」
-</p>
-<p>
-  可以，但唔需要。呢個網站就係畀助理改嘅 —— 你同助理講
-  「幫我加一頁，講⋯⋯」，佢就會寫好、push、出 post。
-  你見到嘅改動，就係你同佢傾過嘅嘢。
-</p>
-
 <div class="note">
-  <strong>助理唔會做嘅事</strong>（呢啲寫死咗喺設定入面，改唔到）：
+  <strong>智能體唔會做嘅事</strong>（呢啲寫死咗喺設定入面，改唔到）：
   <ul style="margin:8px 0 0">
     <li>唔會寫essay俾學生交</li>
     <li>唔會就醫療、法律、財務俾建議</li>
@@ -222,21 +200,34 @@
   </ul>
 </div>
 
+<div class="tidbit">
+  <span class="kicker">小智識</span>
+  <p>
+    <strong>GitHub 係咩？</strong>
+    就好似一個<strong>公開嘅文件櫃</strong>。任何人寫咗嘢擺上去，
+    所有人都可以睇；網頁版本仲會自動幫你更新。
+    所以呢個網站嘅每一頁，其實都喺 GitHub 上面存咗一份。
+    原始碼（智能體寫嘅原始文字）都喺度，
+    <a href="https://github.com/dorapwn/family-agent-site"
+       target="_blank" rel="noopener">隨便你睇</a>。
+  </p>
+</div>
+
 <h2 id="呢個網站點樣起上嚟">呢個網站點樣起上嚟</h2>
 <p>
-  助理識寫網頁、識將網頁 push 上 GitHub。GitHub 一收到更新，就自動 build 同 publish。
+  智能體識寫網頁、識將網頁 push 上 GitHub。GitHub 一收到更新，就自動 build 同 publish。
   所以流程好簡單：
 </p>
 <figure>
   <img class="shot" src="assets/svg/flow-publish.svg"
-       alt="改網頁流程圖：同助理講 → 寫 HTML → 自動檢查 → git push → GitHub build → 你見到新版">
+       alt="改網頁流程圖：同智能體講 → 寫 HTML → 自動檢查 → git push → GitHub build → 你見到新版">
   <figcaption class="small">
     <a href="behind.html">幕後</a>有詳細講每一步同四道檢查。
   </figcaption>
 </figure>
 
 <p>
-  上面條片亦係同一個道理，只不過多一步：助理先寫一段程式，
+  上面條片亦係同一個道理，只不過多一步：智能體先寫一段程式，
   用數學算出每一格文字應該係乜，再砌成 MP4。
   原始碼喺
   <a href="https://github.com/dorapwn/family-agent-site/blob/main/assets/ascii/four_rooms.py"
@@ -253,9 +244,7 @@
     <span class="tag">個人資料唔出門</span>
   </div>
   <p style="margin-top:16px">
-    本頁由家庭助理自動生成 · 最後更新：<span id="built">—</span><br>
-    四個角色的語氣同界線設定喺一個<strong>私人</strong> repo 度，
-    唔會公開。
+    本頁由家庭智能體自動生成 · 最後更新：<span id="built">—</span><br>
   </p>
 </footer>
 
