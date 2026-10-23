@@ -34,6 +34,10 @@ ASSETS = ["assets/four-rooms.mp4", "assets/img/poster.png",
           "assets/svg/mock-scores.svg", "assets/ascii/four_rooms.py",
           "style.css"]
 
+# Every page except 404 must be reachable from every other page's nav.
+NAV_PAGES = ["index.html", "telegram.html", "behind.html", "wishlist.html",
+             "study.html", "home.html", "work.html", "fun.html"]
+
 errors: list[str] = []
 
 
@@ -134,6 +138,21 @@ def main() -> int:
     for a in ASSETS:
         if not os.path.exists(os.path.join(ROOT, a)):
             err(f"asset missing: {a}")
+
+    # Nav consistency: a guide a user cannot navigate to is a dead end.
+    # Checked as a matrix so a page added to NAV_PAGES but forgotten in one
+    # page's <nav> fails loudly instead of silently dropping out.
+    for src in NAV_PAGES:
+        sp = os.path.join(ROOT, src)
+        if not os.path.exists(sp):
+            err(f"nav: {src} listed in NAV_PAGES but missing on disk")
+            continue
+        s = open(sp, encoding="utf-8").read()
+        for dst in NAV_PAGES:
+            if dst == src:
+                continue
+            if f'href="{dst}"' not in s:
+                err(f"nav: {src} has no link to {dst}")
 
     svg_dir = os.path.join(ROOT, "assets", "svg")
     if os.path.isdir(svg_dir):
