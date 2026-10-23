@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>想要咩功能？許願清單 — 家庭 AI 助理</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="kicker">WISHLIST · 許願清單</div>
+  <h1>想要咩功能？講出嚟</h1>
+  <p class="sub">
+    呢頁係俾大家出主意嘅。有咩嘢覺得「如果助理做到就好」，
+    喺呢度寫低，等管理員排次序。
+  </p>
+</header>
+
+<nav class="card" style="margin:28px 0;padding:14px 20px">
+  <a href="index.html">← 返主頁</a> ·
+  <a href="telegram.html">裝 Telegram</a> ·
+  <a href="behind.html">幕後</a> ·
+  <a href="study.html">學業</a> ·
+  <a href="home.html">家務</a> ·
+  <a href="work.html">工作</a> ·
+  <a href="fun.html">玩樂</a>
+</nav>
+
+<h2 style="border-top:none">點樣提出</h2>
+<p>三種方法，揀一個方便嘅：</p>
+<ol>
+  <li>直接同助理講 —— <strong>最快</strong>。佢會自己記低，問返你邊個想要</li>
+  <li>喺呢頁下面嘅表填</li>
+  <li>同管理員講</li>
+</ol>
+
+<div class="prompt">
+  <b>「我想要助理⋯⋯」</b> 或 <b>「大女想要⋯⋯」</b> 或 <b>「屋企人都想要⋯⋯」</b>
+</div>
+
+<div class="note">
+  <strong>講得越具體越好。</strong>
+  「助理要識煮飯」冇用；
+  「助理睇完雪櫃相，話我知用剩低嘅嘢可以做咩菜」就做得到。
+</div>
+
+<h2>已經有人提出嘅</h2>
+
+<h3>1. 語音輸入（講嘢就得）</h3>
+<div class="card" style="border-left:3px solid var(--amber)">
+  <p><strong>想做：</strong>用講嘅代替打字</p>
+  <p><strong>邊個想要：</strong>屋企人、大女、返工嗰邊</p>
+  <p><strong>點解有用：</strong>傾偈、影相、寫嘢嘅時候唔使停低打字</p>
+  <p style="color:var(--ink-dim)"><strong>現況：</strong>未開通。<strong>粵語辨識係已知難題</strong>——
+     助理要真係聽得明先會開，唔會開咗之後你講乜都認錯。
+     <a href="#stt">技術細節睇呢度</a></p>
+</div>
+
+<h3>2. 語音讀出（TTS）</h3>
+<div class="card" style="border-left:3px solid var(--amber)">
+  <p><strong>想做：</strong>助理回覆可以用聲音出，而唔係文字</p>
+  <p><strong>邊個想要：</strong>做緊嘢手濕濕、睇緊煮食、屋企人</p>
+  <p><strong>點解有用：</strong>煮飯嗰陣唔使隔住個抽油煙機睇電話</p>
+  <p style="color:var(--ink-dim)"><strong>現況：</strong>未開通。技術上比語音輸入容易
+     —— 係「讀出嚟」，唔係「聽得明」，出錯機會細好多。</p>
+</div>
+
+<h3>3. 助理識睇相再對答案</h3>
+<div class="card" style="border-left:3px solid var(--amber)">
+  <p><strong>想做：</strong>影張書相上嚟，助理即刻同你講答案同解法</p>
+  <p><strong>邊個想要：</strong>大女、細女（溫習）</p>
+  <p><strong>現況：</strong>部分做到。影傳單、雪櫃、傳單日期已經得；
+     手寫嘅數式同細字仲有難度。</p>
+</div>
+
+<h3>4. 行程自動讀</h3>
+<div class="card" style="border-left:3px solid var(--amber)">
+  <p><strong>想做：</strong>唔使自己抄，助理自己去校曆／學校時間表讀</p>
+  <p><strong>邊個想要：</strong>屋企人</p>
+  <p style="color:var(--ink-dim)"><strong>現況：</strong>每日簡報已行緊，
+     但要校方時間表。影張相上嚟就抄到。</p>
+</div>
+
+<h3>5. 相片自動分類</h3>
+<div class="card" style="border-left:3px solid var(--violet)">
+  <p><strong>想做：</strong>影相上嚟，助理分「證件／成績單／傳單／相簿」</p>
+  <p><strong>邊個想要：</strong>屋企人、返工嗰邊</p>
+  <p style="color:var(--ink-dim)"><strong>現況：</strong>未做。想做嘅話講聲。</p>
+</div>
+
+<h3>6. 一次過出多張圖</h3>
+<div class="card" style="border-left:3px solid var(--violet)">
+  <p><strong>想做：</strong>出分數圖、趨勢圖、時間表一次過出齊</p>
+  <p><strong>邊個想要：</strong>大女、老師</p>
+  <p style="color:var(--ink-dim)"><strong>現況：</strong>未做。一個 request 出三張都得。</p>
+</div>
+
+<h2 id="stt">語音點解未有？（睇得 technical 嘅人）</h2>
+
+<div class="note">
+  呢度解釋點解「講嘢就有」唔係撳個掣咁簡單。
+  屋企人唔需要睇，但幫手維護嘅人應該知道。
+</div>
+
+<h3>要有咩先做到</h3>
+<p>語音輸入（STT）要三樣嘢：</p>
+<table>
+  <tr><th>要咩</th><th>解釋</th></tr>
+  <tr><td>一個語音辨識服務</td><td>將聲音變成文字。有本地（免費但慢）
+      或者雲端（快但要帳戶同錢）。</td></tr>
+  <tr><td>粵語辨識準</td><td>粵語<strong>唔係</strong>標準語音。
+      現有服務對粵語嘅準確度<strong>明顯低過</strong>普通話同英文。</td></tr>
+  <tr><td>一個 key 或者本機計力</td><td>決定用邊個服務、要唔要俾錢</td></tr>
+</table>
+
+<h3>點解唔急住開</h3>
+<p>
+  如果開咗，但係聽錯 —— 例如問「幾時放學」聽成「食咩飯」——
+  結果<strong>比打字更令人煩躁</strong>。
+  所以規矩係：<strong>真係測過先用</strong>。
+</p>
+
+<div class="prompt">
+  <b>（想試嘅話）</b>「我想試下講嘢，邊度試？」
+</div>
+<p>管理員會開一個試用頻道，同埋實測粵語準確度。</p>
+
+<h2>許願表</h2>
+<p>想唔想出聲都可以填。欄位隨便 —— 最重要係<strong>講想要咩</strong>。</p>
+
+<table>
+  <tr><th>邊個</th><th>想要咩功能</th><th>點解想要</th><th>幾想要（1-5）</th></tr>
+  <tr><td style="color:var(--ink-dim)">例如：細女</td>
+      <td style="color:var(--ink-dim)">語音輸入</td>
+      <td style="color:var(--ink-dim)">唔想打字</td>
+      <td style="color:var(--ink-dim)">5</td></tr>
+  <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+  <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+  <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+  <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+</table>
+
+<div class="note">
+  <strong>填完點算？</strong>
+  影張相 send 畀助理，或者直接同助理講。
+  佢會記低、更新呢頁，然後話你知排到第幾位。
+</div>
+
+<h2>一啲可能有人想，但未有人講過</h2>
+<p>助理能力範圍內，但暫時冇人提出：</p>
+<div class="grid">
+  <div class="card"><h3>相片整成短片</h3><p>旅行相自動砌成影片配樂</p></div>
+  <div class="card"><h3>同學／朋友群組代訂餐</h3><p>大家投票，助理落單</p></div>
+  <div class="card"><h3>表單自動填</h3><p>政府表格填好，只留要簽名嗰格</p></div>
+  <div class="card"><h3>睇書記錄</h3><p>影書名同進度，助理記住</p></div>
+</div>
+<p>
+  有冇你想做但上面冇嘅？直接講 —— 加落去好容易。
+</p>
+
+<h2>點樣排優先次序</h2>
+<p>管理員會照呢個次序諗：</p>
+<ol>
+  <li><strong>幾多人想要</strong> —— 四個人都要嘅排先</li>
+  <li><strong>幾常要用</strong> —— 每日用嘅好過一年用一次</li>
+  <li><strong>做得到幾穩陣</strong> —— 唔會出錯嘅排先</li>
+  <li><strong>幾花時間</strong> —— 細嘅排先</li>
+</ol>
+<div class="note">
+  如果兩個功能<strong>有衝突</strong>（例如語音輸入同打字，太多人用會撞），
+  管理員會話你知點解咁排，唔會靜靜地唔做。
+</div>
+
+<footer>
+  <p><a href="index.html">← 返主頁</a></p>
+</footer>
+</div>
+</body>
+</html>

@@ -14,6 +14,7 @@ family-agent-site/
 ├── index.html            主頁（ASCII 動畫 hero + 四張卡）
 ├── telegram.html         裝 Telegram（Android / iOS / 網頁）
 ├── behind.html           幕後：截圖、SVG、ASCII 動畫點做出嚟
+├── wishlist.html         許願清單（用戶出主意、管理員排次序）
 ├── study.html            01 學業
 ├── home.html             02 家務
 ├── work.html             03 工作

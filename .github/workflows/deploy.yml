@@ -42,7 +42,7 @@ jobs:
           echo "deployed to $url"
           sleep 5
           for p in "" index.html telegram.html behind.html study.html \
-                   home.html work.html fun.html 404.html \
+                   home.html work.html fun.html wishlist.html 404.html \
                    assets/four-rooms.mp4 assets/svg/mock-scores.svg; do
             c=$(curl -s -o /dev/null -w '%{http_code}' "$url/$p")
             echo "  HTTP $c  /$p"
