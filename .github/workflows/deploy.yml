@@ -52,7 +52,11 @@ jobs:
           set -euo pipefail
           # These pages are hand-written HTML, not Markdown. A stray **bold**
           # marker renders literally to the reader, so fail the build on it.
-          if grep -n '\*\*' *.html; then
+          #
+          # Exclude DSE grade notation: "1**" through "5**" is the Hong Kong
+          # exam grading scale, not Markdown. Requiring the ** not to follow
+          # a digit skips those while still catching every real bold span.
+          if grep -nE '(^|[^0-9])\*\*[^*]+\*\*' *.html; then
             echo "ERROR: Markdown bold markers found in HTML (use <strong>)"
             exit 1
           fi
