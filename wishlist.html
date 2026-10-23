@@ -180,64 +180,10 @@
   助理會記低、更新呢頁，然後話你知排到第幾位。
 </div>
 
-<script>
-// The form does not submit anywhere on its own: GitHub Pages serves static
-// files only, so there is no server to receive a POST. Instead we assemble the
-// answers into one message and hand it to Telegram's share URL, which opens
-// the chat with the text already typed. The user taps send. Nothing about the
-// request passes through a third-party form service.
-(function () {
-  // Set by the admin to the agent's Telegram username, without the leading @.
-  // If it is not set we fall back to Telegram's share dialog, which needs no
-  // configuration and costs the user one extra tap (picking the chat).
-  var BOT = document.documentElement.dataset.telegramBot || "";
-  var form = document.getElementById("wish");
-  var preview = document.getElementById("preview");
-
-  function collect() {
-    var who = document.getElementById("who").value;
-    var what = document.getElementById("what").value.trim();
-    var why = document.getElementById("why").value.trim();
-    var how = form.querySelector('input[name="how"]:checked');
-    var lines = ["【許願】"];
-    if (who) lines.push("邊個：" + who);
-    if (what) lines.push("想要：" + what);
-    if (why) lines.push("原因：" + why);
-    if (how) lines.push("幾想要：" + how.value + "/5");
-    return lines.join("\n");
-  }
-
-  function validate() {
-    if (!document.getElementById("who").value) {
-      return "請先揀「邊個想要」。";
-    }
-    if (!document.getElementById("what").value.trim()) {
-      return "請填「想要咩功能」，一句話就得。";
-    }
-    return "";
-  }
-
-  form.addEventListener("submit", function (ev) {
-    ev.preventDefault();
-    var problem = validate();
-    if (problem) { preview.textContent = problem; return; }
-
-    var text = collect();
-    var url;
-    if (BOT) {
-      // Straight to the agent's chat, text pre-typed.
-      url = "https://t.me/" + BOT + "?text=" + encodeURIComponent(text);
-      preview.textContent = "開緊 Telegram⋯⋯";
-    } else {
-      // Share sheet: the user picks the assistant chat themselves.
-      url = "https://t.me/share/url?url=" + encodeURIComponent(location.href) +
-            "&text=" + encodeURIComponent(text);
-      preview.textContent = "開緊 Telegram⋯⋯ 揀「家庭 AI 助理」就得。";
-    }
-    window.location.href = url;
-  });
-})();
-</script>
+<!-- Submit handling lives in supabase/submit.js: one code path that posts to
+     Supabase when an admin has configured it, and hands off to Telegram when
+     they have not. Inert with no configuration. -->
+<script src="supabase/submit.js"></script>
 
 <h2>一啲可能有人想，但未有人講過</h2>
 <p>助理能力範圍內，但暫時冇人提出：</p>

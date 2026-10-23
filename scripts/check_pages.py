@@ -33,7 +33,8 @@ ASSETS = ["assets/four-rooms.mp4", "assets/img/poster.png",
           "assets/img/hkeaa-dse-dates.png", "assets/img/hermes-voice-mode.png",
           "assets/svg/mock-scores.svg", "assets/svg/flow-capture.svg",
           "assets/svg/flow-publish.svg", "assets/svg/flow-ascii.svg", "assets/svg/flow-wishlist.svg",
-          "assets/ascii/four_rooms.py", "style.css"]
+          "assets/ascii/four_rooms.py", "style.css",
+          "supabase/submit.js", "supabase/wishlist.sql"]
 
 # Every page except 404 must be reachable from every other page's nav.
 NAV_PAGES = ["index.html", "telegram.html", "behind.html", "wishlist.html",
@@ -95,6 +96,34 @@ def check_no_nested_p(name: str, src: str) -> None:
             reported = True
         if tag not in PHRASING:
             stack.append(tag)
+
+
+def check_no_service_role_key() -> None:
+    """The service_role key bypasses RLS entirely.
+
+    Anything holding it can read and delete every wish, so it must never be
+    committed here or inlined into a page. Supabase prefixes both key types
+    with 'sb_', so a grep for the role name is the reliable test.
+    """
+    targets = []
+    for root, dirs, files in os.walk(ROOT):
+        dirs[:] = [d for d in dirs if d not in (".git", "node_modules")]
+        for f in files:
+            if f.endswith((".html", ".js", ".sql", ".md", ".yml", ".css")):
+                targets.append(os.path.join(root, f))
+    for path in targets:
+        try:
+            src = open(path, encoding="utf-8").read()
+        except (OSError, UnicodeDecodeError):
+            continue
+        rel = os.path.relpath(path, ROOT)
+        # Flag an assignment of a real-looking key, not the prose explaining
+        # that it must not be committed.
+        for m in re.finditer(
+                r"""service[_-]?role["'\s]*[:=]\s*["']?(sb_secret_\w{10,}|[A-Za-z0-9_\-]{40,})""",
+                src, re.I):
+            err(f"{rel}: possible service_role key committed "
+                f"(use the publishable key in pages; service_role stays server-side)")
 
 
 ARROWS = "\u2190\u2191\u2192\u2193\u21b3\u21b5"
