@@ -97,6 +97,29 @@ def check_no_nested_p(name: str, src: str) -> None:
             stack.append(tag)
 
 
+ARROWS = "\u2190\u2191\u2192\u2193\u21b3\u21b5"
+
+
+def check_no_ascii_flowcharts(name: str, src: str) -> None:
+    """Flowcharts must be SVG, not arrow stacks in <pre>.
+
+    CJK text in a monospace <pre> does not align reliably across viewers and
+    platforms, so a diagram drawn with arrows and spaces breaks for the reader.
+    Draw it as SVG instead — it scales and prints.
+    """
+    for m in re.finditer(r"<pre\b[^>]*>(.*?)</pre>", src, re.S):
+        body = re.sub(r"<[^>]+>", "", m.group(1))
+        lines = [ln for ln in body.splitlines() if ln.strip()]
+        arrow_lines = [ln for ln in lines
+                       if any(c in ARROWS for c in ln)]
+        # 4+ non-empty lines with arrows in a third of them = a flowchart
+        if len(lines) >= 4 and len(arrow_lines) >= 3:
+            line = src.count("\n", 0, m.start()) + 1
+            err(f"{name}:{line}: ASCII flowchart in <pre> "
+                f"({len(lines)} lines, {len(arrow_lines)} with arrows) "
+                f"— draw it as SVG")
+
+
 def check_markdown(name: str, src: str) -> None:
     # Strip code spans and <code> blocks first: a page may legitimately
     # quote the literal marker (e.g. documenting the very bug this checks).
@@ -133,6 +156,7 @@ def main() -> int:
             src = fh.read()
         check_tag_balance(name, src)
         check_no_nested_p(name, src)
+        check_no_ascii_flowcharts(name, src)
         check_markdown(name, src)
         check_refs(name, src)
 
