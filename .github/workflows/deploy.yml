@@ -20,52 +20,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Verify links and assets
-        run: |
-          set -euo pipefail
-          # every page must be linked from index.html
-          for p in study home work fun; do
-            grep -q "$p.html" index.html || {
-              echo "ERROR: $p.html not linked from index.html"; exit 1; }
-          done
-          # every referenced local asset must exist
-          for f in assets/four-rooms.mp4 assets/img/poster.png \
-                   assets/img/hkeaa-dse-dates.png \
-                   assets/img/hermes-voice-mode.png \
-                   assets/svg/mock-scores.svg \
-                   assets/ascii/four_rooms.py; do
-            test -f "$f" || { echo "ERROR: missing $f"; exit 1; }
-          done
-          echo "asset check passed"
-
-      - name: SVG must be well-formed
-        run: |
-          set -euo pipefail
-          for f in assets/svg/*.svg; do
-            python3 -c "import xml.dom.minidom,sys; xml.dom.minidom.parse('$f')" \
-              || { echo "ERROR: $f is not valid XML"; exit 1; }
-          done
-          echo "svg check passed"
-
-      - name: Guard against Markdown syntax leaking into HTML
-        run: |
-          set -euo pipefail
-          # These pages are hand-written HTML, not Markdown. A stray **bold**
-          # marker renders literally to the reader, so fail the build on it.
-          #
-          # Exclude DSE grade notation: "1**" through "5**" is the Hong Kong
-          # exam grading scale, not Markdown. Requiring the ** not to follow
-          # a digit skips those while still catching every real bold span.
-          if grep -nE '(^|[^0-9])\*\*[^*]+\*\*' *.html; then
-            echo "ERROR: Markdown bold markers found in HTML (use <strong>)"
-            exit 1
-          fi
-          # Every page must be reachable from the index cards
-          for p in study home work fun; do
-            grep -q "href=\"$p.html\"" index.html || {
-              echo "ERROR: index.html has no card linking to $p.html"; exit 1; }
-          done
-          echo "content check passed"
+      # Single gate, runnable locally too:
+      #   python3 scripts/check_pages.py
+      # Covers tag balance, nested <p>, dead local refs, required assets,
+      # SVG well-formedness, and Markdown bold leaking into HTML.
+      - name: Structural page check
+        run: python3 scripts/check_pages.py
 
       - uses: actions/configure-pages@v5
 
@@ -81,13 +41,10 @@ jobs:
           url="${{ steps.deployment.outputs.page_url }}"
           echo "deployed to $url"
           sleep 5
-          code=$(curl -s -o /dev/null -w '%{http_code}' "$url/")
-          echo "root: HTTP $code"
-          for p in study home work fun; do
-            c=$(curl -s -o /dev/null -w '%{http_code}' "$url/$p.html")
-            echo "$p.html: HTTP $c"
+          for p in "" index.html telegram.html behind.html study.html \
+                   home.html work.html fun.html 404.html \
+                   assets/four-rooms.mp4 assets/svg/mock-scores.svg; do
+            c=$(curl -s -o /dev/null -w '%{http_code}' "$url/$p")
+            echo "  HTTP $c  /$p"
+            test "$c" = "200" || { echo "FAILED: /$p"; exit 1; }
           done
-          ac=$(curl -s -o /dev/null -w '%{http_code}' "$url/assets/four-rooms.mp4")
-          echo "video: HTTP $ac"
-          test "$code" = "200"
-          test "$ac" = "200"

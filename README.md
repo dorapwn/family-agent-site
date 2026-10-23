@@ -12,17 +12,22 @@ Persona（語氣、界線、記憶範圍）喺另一個 **private** repo：`dora
 ```
 family-agent-site/
 ├── index.html            主頁（ASCII 動畫 hero + 四張卡）
+├── telegram.html         裝 Telegram（Android / iOS / 網頁）
+├── behind.html           幕後：截圖、SVG、ASCII 動畫點做出嚟
 ├── study.html            01 學業
 ├── home.html             02 家務
 ├── work.html             03 工作
 ├── fun.html              04 玩樂
 ├── 404.html
 ├── style.css
+├── scripts/
+│   └── check_pages.py    部署前結構檢查（本地可跑）
 ├── assets/
 │   ├── four-rooms.mp4    ASCII 動畫（20s, 1280x720）
-│   ├── img/              headless browser 攞嘅網頁截圖
+│   ├── img/              由原文攞嘅網頁截圖
+│   ├── svg/              向量圖
 │   └── ascii/
-│       └── four_rooms.py ASCII 動畫原始碼（頁面有 link 出去）
+│       └── four_rooms.py ASCII 動畫原始碼（頁面 link 去 GitHub）
 └── .github/workflows/
     └── deploy.yml        push 自動 build + deploy
 ```
@@ -30,6 +35,7 @@ family-agent-site/
 ## Deploy
 
 ```bash
+python3 scripts/check_pages.py     # 先本地 check
 git add -A && git commit -m "..." && git push
 ```
 
@@ -49,7 +55,7 @@ curl -sI https://dorapwn.github.io/family-agent-site/ | head -1
 | 指南內容 | `*.html` | 保持 `<a href="index.html">← 返主頁</a>` |
 | 樣式 | `style.css` | 深色為主，手機優先 |
 | ASCII 動畫 | `assets/ascii/four_rooms.py` → rerender | 每次 ~4 分鐘（4 核） |
-| 新增指南頁 | 新 `*.html` + `index.html` 加卡 + deploy.yml 加檢查 | 三處都要改 |
+| 新增頁 | 新 `*.html` + `index.html` 加卡 + `scripts/check_pages.py` 的 ASSETS（如有新 asset） | 跑一次 check |
 
 ## Rerender ASCII 動畫
 

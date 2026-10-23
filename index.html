@@ -99,7 +99,8 @@
   <figcaption>
     四個房間 —— 四個人、四個助理、同一個腦。
     呢條片每一格文字都係用數學算出嚟嘅，唔係剪輯出嚟嘅。
-    <a href="assets/ascii/four_rooms.py">原始碼在這裡</a>。
+    <a href="https://github.com/dorapwn/family-agent-site/blob/main/assets/ascii/four_rooms.py"
+       target="_blank" rel="noopener">原始碼在這裡（GitHub）</a>。
   </figcaption>
 </figure>
 
@@ -138,15 +139,32 @@
 <h2>點樣開始（其實唔使開始）</h2>
 <p>
   呢個助理已經 setup 好。你要做的只有一件事：
-  打開你平時傾 WhatsApp 嘅嗰個 app，搵返個對話，講嘢。
+  打開 Telegram，搵返個對話，傾偈。
 </p>
+<div class="note">
+  <strong>Telegram 係咩？</strong>
+  就好似 WhatsApp ——
+  一個傾偈嘅 app，有對話、有群組、可以傳相、可以出聲。
+  個分別係 Telegram 通常行快啲、慳電腦D，而且免費。
+  <a href="telegram.html">教你怎么裝 Telegram →</a>
+</div>
 
 <table>
   <tr><th>你係</th><th>搵邊個</th><th>第一步講咩</th></tr>
   <tr><td>學生</td><td>Telegram 上面嘅 study bot</td><td>「我做完一科，你 check 下」</td></tr>
-  <tr><td>屋企人</td><td>WhatsApp / Telegram 上面嘅 home bot</td><td>「今日要做啲咩？」</td></tr>
+  <tr><td>屋企人</td><td>Telegram 上面嘅 home bot</td><td>「今日要做啲咩？」</td></tr>
   <tr><td>返工</td><td>Telegram 上面嘅 work bot</td><td>「幫我整理呢段會議記錄」</td></tr>
 </table>
+
+<h2>打字定講嘢？</h2>
+<p>
+  <strong>暫時要打字。</strong> 語音功能仲未開通。
+</p>
+<div class="warn">
+  如果你覺得打字慢、想用講嘅，
+  <strong>請搵助理導師（管理員）</strong>，
+  講明邊個想用語音。開通之後會通知你。
+</div>
 
 <h2>一件你可能會問嘅事</h2>
 <p>
@@ -184,17 +202,20 @@ GitHub Actions 自動 build
 GitHub Pages publish  ← 你而家睇緊呢版</code></pre>
 
 <p>
-  上面條片亦係同一個道理，只不過多一步：助理先寫一段 Python，
-  用數學算出每一格文字應該係乜，再交畀 ffmpeg 砌成 MP4。
-  原始碼就喺 <a href="assets/ascii/four_rooms.py">assets/ascii/four_rooms.py</a>，
-  隨便你睇。
+  上面條片亦係同一個道理，只不過多一步：助理先寫一段程式，
+  用數學算出每一格文字應該係乜，再砌成 MP4。
+  原始碼喺
+  <a href="https://github.com/dorapwn/family-agent-site/blob/main/assets/ascii/four_rooms.py"
+     target="_blank" rel="noopener">GitHub 上面</a>，隨便你睇。
+  想知中間發生咩事，去
+  <a href="behind.html">幕後：呢啲圖同片係點做出嚟</a>。
 </p>
 
 <footer>
   <div>
     <span class="tag">廣東話</span>
     <span class="tag">手機優先</span>
-    <span class="tag">語音輸入</span>
+    <span class="tag">打字為主</span>
     <span class="tag">個人資料唔出門</span>
   </div>
   <p style="margin-top:16px">

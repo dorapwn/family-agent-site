@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>幕後 — 家庭 AI 助理</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="kicker">BEHIND THE SCENES · 幕後</div>
+  <h1>呢啲圖同片係點做出嚟</h1>
+  <p class="sub">
+    其他四頁講點用。呢頁講<strong>助理點樣自己出圖、出片、出網頁</strong>——
+    想知個過程嘅人，睇呢頁。
+  </p>
+</header>
+
+<nav class="card" style="margin:28px 0;padding:14px 20px">
+  <a href="index.html">← 返主頁</a> ·
+  <a href="telegram.html">裝 Telegram</a> ·
+  <a href="study.html">學業</a> ·
+  <a href="home.html">家務</a> ·
+  <a href="work.html">工作</a> ·
+  <a href="fun.html">玩樂</a>
+</nav>
+
+<h2 style="border-top:none">一、影網頁：headless browser 係咩？</h2>
+
+<p>
+  你喺 <a href="study.html">學業指南</a> 或者 <a href="fun.html">玩樂指南</a>
+  見到嘅網頁截圖，唔係助理自己畫嘅，係助理<strong>幫你開一個真嘅瀏覽器，
+  去嗰個網址影張相</strong>。
+</p>
+
+<h3>「headless」係咩意思？</h3>
+<p>
+  瀏覽器（Chrome、Safari、Edge）開一個網頁，正常情況你見到個視窗。
+  但伺服器上面嘅電腦冇屏幕，<strong>根本唔需要開個視窗出嚟</strong>——
+  只需要個程式將網頁「讀入去」然後畫成圖。
+</p>
+<p>
+  Headless browser 意思就係<strong>淨係用瀏覽器嘅引擎，唔開視窗</strong>。
+</p>
+
+<div class="note">
+  <strong>點解要咁做？</strong>
+  <ul style="margin:8px 0 0">
+    <li>你可以直連原文（hkeaa.edu.hk），唔使經過任何中途網站</li>
+    <li>網站日後改咗，你張圖<strong>唔會變</strong>——因為張圖已經存咗喺呢度</li>
+    <li>有啲網站會擋自動瀏覽器。呢種情況助理會話你知，
+        唔會攞張殘缺嘅圖充數</li>
+  </ul>
+</div>
+
+<h3>實際流程</h3>
+<pre><code>你講：「幫我影 HKEAA 文憑試時間表」
+    ↓
+助理開一個無頭瀏覽器
+    ↓
+去 hkeaa.edu.hk 開頁面，等佢載入完
+    ↓
+影一張圖，存低
+    ↓
+放上 GitHub，跟網頁一齊 publish
+    ↓
+你喺指南見到嗰張圖</code></pre>
+
+<p>
+  呢兩張就係咁做出嚟嘅：
+</p>
+
+<figure>
+  <img class="shot" src="assets/img/hkeaa-dse-dates.png" alt="HKEAA 文憑試重要日期頁面截圖">
+  <figcaption class="small">直接從 hkeaa.edu.hk 攞。</figcaption>
+</figure>
+
+<figure>
+  <img class="shot" src="assets/img/hermes-voice-mode.png" alt="語音功能說明頁面截圖">
+  <figcaption class="small">
+    呢張係語音功能嘅文件頁。功能<strong>仲未開通</strong>——
+    呢個頁只係留低做記錄。開通之後才會喺指南教大家用。
+  </figcaption>
+</figure>
+
+<h2>二、畫圖：SVG</h2>
+<p>
+  <a href="study.html">學業指南</a> 入面嗰張分數趨勢圖，
+  唔係用畫圖軟件畫——係助理<strong>直接寫成代碼</strong>，
+  每一條線、每一個點、每一個字都由文字描述。
+</p>
+
+<p>
+  呢個格式叫 SVG。佢最大嘅優點係
+  <strong>放大都唔會模糊</strong>，
+  所以印出嚟貼喺雪櫃、擺喺學校報告都仲係清楚。
+</p>
+
+<figure>
+  <img class="shot" src="assets/svg/mock-scores.svg" alt="模擬考分數趨勢折線圖">
+  <figcaption class="small">
+    原始碼喺
+    <a href="https://github.com/dorapwn/family-agent-site/blob/main/assets/svg/mock-scores.svg"
+       target="_blank" rel="noopener">GitHub 上面</a>——
+    開個 browser 打開就見到全部代碼。
+  </figcaption>
+</figure>
+
+<h3>改圖唔使重畫</h3>
+<p>
+  因為佢係代碼，助理可以只改其中一兩行。
+  你講「深啲」、「加多一條⋯⋯」，佢改完即刻 publish，
+  <strong>但個網址唔變</strong>。
+</p>
+
+<h2>三、短片：ASCII 動畫</h2>
+
+<p>主頁頂部嗰條 20 秒嘅動畫，做法同 SVG 類似，都係寫代碼出嚟。</p>
+
+<h3>點解字可以郁？</h3>
+<p>
+  條片有 <strong>480 格</strong>。每一格，助理會：
+</p>
+<ol>
+  <li>用數學算出一個「亮度地圖」——
+      每一格該著幾多光（0 到 1）</li>
+  <li>亮度越高，就配一個更實心嘅符號
+      （空格 → <code>.</code> → <code>o</code> → <code>@</code> → 實心方塊）</li>
+  <li>貼上顏色（每個場景有唔同色系）</li>
+  <li>加掃描線、halo（光暈）、雜訊、邊緣變色，做出舊 CRT 螢幕感</li>
+</ol>
+
+<div class="note">
+  <strong>五個場景，五種唔同花色：</strong>
+  <ul style="margin:8px 0 0">
+    <li><strong>學業</strong> — 青綠色，符號向下流動，似答題時嘅感覺</li>
+    <li><strong>家務</strong> — 琥珀色，一圈圈擴散，似屋企嘅暖光</li>
+    <li><strong>工作</strong> — 鋼藍色，橫掃線，似報表</li>
+    <li><strong>玩樂</strong> — 紫紅色，扭動嘅曲線，純粹亂郁</li>
+    <li><strong>尾</strong> — 四種疊埋一齊，四個人變成一個腦</li>
+  </ul>
+</div>
+
+<p>
+  全部 480 格係平行計，同時跑，大概 4 分鐘出片。
+</p>
+
+<p>
+  原始碼喺
+  <a href="https://github.com/dorapwn/family-agent-site/blob/main/assets/ascii/four_rooms.py"
+     target="_blank" rel="noopener">GitHub 上面</a>。
+  想改顏色、改節奏、改符號——改幾行數就得。
+</p>
+
+<h2>四、網頁本身</h2>
+
+<p>
+  呢四頁指南（加呢頁）全部係助理寫嘅 HTML。
+  流程好簡單：
+</p>
+
+<pre><code>你同助理講：「幫我加多一頁，講⋯⋯」
+    ↓
+助理寫好 HTML 檔
+    ↓
+檢查：啲連結啱唔啱？啲圖片在唔在？
+    ↓
+git commit → git push
+    ↓
+GitHub 自動 publish
+    ↓
+你 refresh 就見到新版</code></pre>
+
+<h3>有四道自動檢查</h3>
+<p>
+  每次 publish 之前，會有四個自動檢查跑一次，
+  <strong>任何一個唔過就唔會 publish</strong>：
+</p>
+<ol>
+  <li>四個指南頁有冇漏咗連結</li>
+  <li>所有圖片、影片檔在唔在</li>
+  <li>SVG 檔格式對唔對（防止畫唔出嚟）</li>
+  <li>冇殘留嘅 Markdown 符號（`**`）—— 呢樣捉過我一次</li>
+</ol>
+
+<div class="note">
+  <strong>第 4 個檢查捉過我：</strong>
+  我寫頁嗰陣喺一個格仔入面用咗 `**出嚟嘅嘢**`，
+  Markdown 嘅粗體寫法喺 HTML 入面會<strong>原樣顯示出嚟</strong>，
+  讀者會見到兩個星號。所以加咗自動檢查，
+  唔準再犯。
+</div>
+
+<h2>五、私隱嗰半邊</h2>
+<p>
+  你睇嘅呢啲頁面係公開嘅，因為入面冇任何個人資料。
+  但助理<strong>點樣開口、邊啲唔會做</strong>——
+  例如唔會寫 essay、唔會就醫療俾建議——
+  呢啲設定喺另一個<strong>私人</strong> repository，
+  唔會公開。
+</p>
+
+<p>
+  分開係有原因：語氣規則入面會提到成員嘅習慣同埋工作細節，
+  呢啲<strong>唔應該</strong>出現喺公開網頁。
+</p>
+
+<h2>想自己試？</h2>
+<div class="prompt">
+  <b>「幫我影一張 HKEAA 網頁截圖」</b><br>
+  <b>「用我嘅分數畫張圖」</b><br>
+  <b>「做段 ASCII 動畫，講⋯⋯」</b><br>
+  <b>「幫我做個網頁，⋯⋯」</b>
+</div>
+
+<footer>
+  <p><a href="index.html">← 返主頁</a></p>
+</footer>
+</div>
+</body>
+</html>
