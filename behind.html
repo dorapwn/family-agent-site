@@ -35,7 +35,8 @@
   <ol>
     <li><a href="#一-影網頁-headless-browser-係咩">一、影網頁：headless browser 係咩？</a></li>
     <li><a href="#二-網頁本身">二、網頁本身</a></li>
-    <li><a href="#三-許願表-表格點樣送得到">三、許願表：表格點樣送得到</a></li>
+    <li><a href="#三-點解唔直接叫智能體畫圖片同影片">三、點解唔直接叫智能體畫圖片同影片？</a></li>
+    <li><a href="#四-許願表-表格點樣送得到">四、許願表：表格點樣送得到</a></li>
     <li><a href="#想自己試">想自己試？</a></li>
   </ol>
 </details>
@@ -134,7 +135,109 @@
   唔準再犯。
 </div>
 
-<h2 id="三-許願表-表格點樣送得到">三、許願表：表格點樣送得到</h2>
+<h2 id="三-點解唔直接叫智能體畫圖片同影片">三、點解唔直接叫智能體畫圖片同影片？</h2>
+
+<p>
+  呢個係好多人都會問嘅問題：
+  <strong>「你叫智能體畫張相出嚟啦，點解要畫 SVG？」</strong>
+  答案係：智能體<strong>識</strong>畫圖片同影片，
+  但呢部機<strong>冇開呢個功能</strong>，原因係<strong>貴</strong>。
+</p>
+
+<h3>其實個功能係存在嘅</h3>
+
+<p>
+  Hermes 本身有官方嘅<strong>圖片生成</strong>同<strong>影片生成</strong>功能（插件），
+  接到 FAL.ai 呢類服務度。配置檔入面其實有齊晒所有選項：
+</p>
+
+<table>
+  <tr><th>做圖片</th><th>做影片</th></tr>
+  <tr>
+    <td>deepinfra、fal、krea、meta-ai、openai、openai-codex、openrouter、xai</td>
+    <td>deepinfra、fal、openrouter、xai</td>
+  </tr>
+</table>
+
+<p>
+  但係喺呢部機上面，呢啲全部都<strong>停用</strong>咗。真正嘅開關係配置檔入面
+  <code>disabled_toolsets</code> 呢一段 —— 佢列明咗
+  <code>image_gen</code>、<code>video_gen</code>、<code>video</code>、
+  <code>tts</code> 全部<strong>停用</strong>，
+  而且個配置檔<strong>完全冇 <code>image_gen:</code> 同 <code>video_gen:</code> 呢兩段</strong>，
+  即係連幾多錢、點樣計、邊個模型都冇填。
+</p>
+
+<div class="note">
+  <strong>睇相同整相係兩回事。</strong>
+  <code>vision</code>（<code>vision_analyze</code>）冇被停用 ——
+  所以智能體<strong>睇得出</strong>你傳過嚟嘅相，
+  但<strong>整唔到</strong>新嘅相或者影片。
+</div>
+
+<h3>貴幾多？</h3>
+
+<p>
+  FAL.ai 嘅實際收費（模型由平到貴）：
+</p>
+
+<table>
+  <tr><th>模型</th><th>出圖時間</th><th>價錢</th></tr>
+  <tr><td>flux-2/klein/9b</td><td>&lt;1 秒</td><td>$0.006 / 百萬像素</td></tr>
+  <tr><td>z-image/turbo</td><td>~2 秒</td><td>$0.005 / 百萬像素</td></tr>
+  <tr><td>flux-2-pro</td><td>~6 秒</td><td>$0.03 / 百萬像素</td></tr>
+  <tr><td>ideogram/v3</td><td>~5 秒</td><td>$0.03–0.09 / 張</td></tr>
+  <tr><td>gpt-image-1.5</td><td>~15 秒</td><td>$0.034 / 張</td></tr>
+  <tr><td>recraft/v4/pro</td><td>~8 秒</td><td>$0.25 / 張</td></tr>
+  <tr><td>nano-banana-pro</td><td>~8 秒</td><td>$0.15 / 張</td></tr>
+  <tr><td>krea/v2/large</td><td>~25–60 秒</td><td>$0.060–0.065 / 張</td></tr>
+</table>
+
+<div class="note">
+  <strong>影片係按秒數計，貴好多。</strong>
+  同一個 FAL 服務上面，影片嘅實際收費大概係
+  Wan 2.5 <strong>$0.05 / 秒</strong>、Kling 2.5 <strong>約 $0.07–0.08 / 秒</strong>、
+  Veo 3.1 <strong>由 $0.20 / 秒起</strong>。
+  即係一條 <strong>5 秒</strong>嘅短片，差唔多係
+  <strong>$0.25 至 $1</strong>，仲要等 25–60 秒先出。
+  <br><br>
+  <strong>成本同時間都係按次累加</strong> ——
+  屋企三個人一日傾幾十個對話，唔可能次次都去買圖。
+</div>
+
+<h3>所以點解唔開？</h3>
+
+<p>
+  呢個係<strong>錢嘅問題，唔係技術問題</strong>。
+  智能體<strong>識</strong>做，但每做一次都要畀錢。
+  呢家人嘅用量計劃本身<strong>每五個鐘清零一次</strong>（見
+  <a href="trouble.html">常見問題</a>），已經要留意外，
+  唔想再疊多一層按次收費嘅開支。
+</p>
+
+<p>
+  反而 <strong>SVG 係零成本</strong>：
+</p>
+
+<table>
+  <tr><th></th><th>SVG / ASCII</th><th>AI 生成圖片影片</th></tr>
+  <tr><td>一次成本</td><td>$0（淨係計電腦時間）</td><td>$0.03–$0.65 起</td></tr>
+  <tr><td>要等</td><td>即開即有（ASCII 影片約 4 分鐘）</td><td>圖 1–60 秒，影片更耐</td></tr>
+  <tr><td>改一個名</td><td>改一行字</td><td>要再買一次</td></tr>
+  <tr><td>放大</td><td>唔會花</td><td>會花（位圖有限解像度）</td></tr>
+  <tr><td>可唔可以自己改</td><td>得，係文字檔</td><td>唔得</td></tr>
+</table>
+
+<div class="note">
+  <strong>一句總結：</strong>
+  唔係智能體做唔到，係<strong>唔想每張圖都畀錢</strong>。
+  SVG 呢條路行得通、零成本、改得郁，所以行呢條。
+  <br><br>
+  如果將來管理員開咗圖片生成，呢啲比較就會變 —— 但到時
+  SVG 仍然有佢自己嘅位置（圖表、流程圖、動畫，呢啲 AI 未必畫得出嚟）。
+</div>
+
+<h2 id="四-許願表：表格點樣送得到">四、許願表：表格點樣送得到</h2>
 
 <p>
   你可能會問：GitHub Pages 淨係得啲檔案，<strong>表格填完送去邊？</strong>
