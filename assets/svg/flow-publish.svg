@@ -40,8 +40,8 @@
   </g>
 
   <g fill="#e8e4dc" font-size="12.5">
-    <text x="66" y="52">你同助理講：「幫我加多一頁，講⋯⋯」</text>
-    <text x="66" y="113">助理寫好 HTML 檔</text>
+    <text x="66" y="52">你同智能體講：「幫我加多一頁，講⋯⋯」</text>
+    <text x="66" y="113">智能體寫好 HTML 檔</text>
     <text x="66" y="171">檢查：連結啱唔啱？圖片在唔在？</text>
     <text x="66" y="229">git commit → git push</text>
     <text x="66" y="287">GitHub 自動 build</text>
@@ -66,6 +66,6 @@
     好消息：呢個網址唔會變。refresh 就係新版。
   </text>
   <text x="26" y="418" fill="#4a443c" font-size="10">
-    由助理自動畫成 SVG。
+    由智能體自動畫成 SVG。
   </text>
 </svg>

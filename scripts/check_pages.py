@@ -34,6 +34,7 @@ ASSETS = ["assets/four-rooms.mp4", "assets/img/poster.png",
           "assets/svg/mock-scores.svg", "assets/svg/flow-capture.svg",
           "assets/svg/flow-publish.svg", "assets/svg/flow-ascii.svg",
           "assets/svg/flow-wishlist.svg", "assets/svg/hall-of-fame.svg",
+          "assets/svg/flow-check.svg",
           "assets/ascii/four_rooms.py", "style.css",
           "assets/js/deck.js",
           "scripts/build_slides.py", "scripts/capture_su.py",
@@ -47,10 +48,11 @@ SLIDE_COUNT = 7
 
 # One canonical order for the whole site. The four guides come first because
 # they are what a user came for; behind-the-scenes is last because it is the
-# one page they never need.
+# one page they never need. The AI guide sits with the other guides because
+# it is about how to use the thing, not about a topic area.
 NAV_ORDER = ["index.html", "study.html", "home.html", "work.html", "fun.html",
-             "tips.html", "trouble.html", "telegram.html", "wishlist.html",
-             "behind.html"]
+             "ai-guide.html", "tips.html", "trouble.html", "telegram.html",
+             "wishlist.html", "behind.html"]
 NAV_PAGES = NAV_ORDER
 
 errors: list[str] = []
@@ -286,6 +288,67 @@ def check_deck_images_exist(name: str, src: str) -> None:
                     f"references missing image '{href}'")
 
 
+def check_no_stale_terms() -> None:
+    """The old word for the assistant must not come back.
+
+    助理 was renamed to 智能體 across the site, but the rename was a plain
+    search-and-replace over HTML, and the SVG diagrams were missed — they are
+    not HTML, so nothing checked them. Two of them still said 助理, months
+    later, in the middle of a page the family actually reads. The same was
+    true of the wishlist form's JavaScript, which is the one place the word
+    was still user-facing.
+
+    This rule reads SVG, JS and Markdown too, so a stale term cannot hide in
+    any of them. It runs once for the whole site, not once per page.
+    """
+    stale = [("助理", "智能體")]
+
+    def scan(path: str, rel: str) -> None:
+        try:
+            body = open(path, encoding="utf-8").read()
+        except (OSError, UnicodeDecodeError):
+            return
+        for old, new in stale:
+            if old in body:
+                line = body.count("\n", 0, body.index(old)) + 1
+                err(f"{rel}:{line}: stale term '{old}' (use '{new}')")
+
+    for f in sorted(os.listdir(ROOT)):
+        if f.endswith((".html", ".js", ".md")):
+            scan(os.path.join(ROOT, f), f)
+
+    for sub in ("assets", "supabase", "scripts", "tests"):
+        base = os.path.join(ROOT, sub)
+        if not os.path.isdir(base):
+            continue
+        for dirpath, _dirs, files in os.walk(base):
+            if ".git" in dirpath:
+                continue
+            for f in sorted(files):
+                if f.endswith((".svg", ".js")):
+                    p = os.path.join(dirpath, f)
+                    scan(p, os.path.relpath(p, ROOT))
+
+
+def check_anchor_targets(name: str, src: str) -> None:
+    """Every in-page link (#something) must point at an id that exists.
+
+    A dead anchor silently does nothing when tapped. The TOCs are generated,
+    so the usual failure is a hand-written id on an <h2> that does not match
+    what the generator would produce — a space where the generator writes a
+    hyphen, say. Found on the AI guide: "細路用 AI" vs "細路用-ai".
+    """
+    ids = set(re.findall(r'\bid="([^"]+)"', src))
+    for m in re.finditer(r'href="#([^"]+)"', src):
+        target = m.group(1)
+        if not target:
+            continue
+        if target not in ids:
+            line = src.count("\n", 0, m.start()) + 1
+            err(f"{name}:{line}: dead anchor '#{target}' "
+                f"(no element with that id)")
+
+
 def check_markdown(name: str, src: str) -> None:
     # Strip code spans and <code> blocks first: a page may legitimately
     # quote the literal marker (e.g. documenting the very bug this checks).
@@ -327,11 +390,14 @@ def main() -> int:
         check_deck_consistency(name, src)
         check_deck_images_exist(name, src)
         check_markdown(name, src)
+        check_anchor_targets(name, src)
         check_refs(name, src)
 
     for a in ASSETS:
         if not os.path.exists(os.path.join(ROOT, a)):
             err(f"asset missing: {a}")
+
+    check_no_stale_terms()
 
     # Nav consistency: a guide a user cannot navigate to is a dead end.
     # Checked as a matrix so a page added to NAV_PAGES but forgotten in one

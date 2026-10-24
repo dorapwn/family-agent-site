@@ -105,13 +105,19 @@ def main() -> int:
             at = hdr.end()
         s2 = s2[:at] + "\n" + toc + "\n" + s2[at:]
 
-        # Stamp ids onto the h2s, in order, only where one is missing.
+        # Stamp the generated ids onto the h2s, in order.
+        #
+        # The generated id always wins, even if the h2 already had a
+        # hand-written one. Otherwise the two can disagree and the TOC ends
+        # up linking to nothing: "手機（Android / iPhone）" slugifies to
+        # "手機-android-iphone", but the h2 said id="手機" and the stamp
+        # step left it alone. Five pages had that class of dead link.
         it = iter(entries)
 
         def stamp(m):
-            if "id=" in m.group(1):
-                return m.group(0)
-            return f'<h2 id="{next(it)[0]}"{m.group(1)}>'
+            slug = next(it)[0]
+            attrs = re.sub(r'\s*\bid="[^"]*"', "", m.group(1))
+            return f'<h2 id="{slug}"{attrs}>'
 
         s2 = re.sub(r"<h2([^>]*)>", stamp, s2)
 

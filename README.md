@@ -1,4 +1,4 @@
-# 家庭 AI 助理 — 使用指南網站
+# 家庭 AI 智能體 — 使用指南網站
 
 **Public site.** 呢度載嘅係畀用戶睇嘅內容：學業 / 家務 / 工作 / 玩樂四份指南。
 
@@ -78,5 +78,5 @@ Captured directly from the source — no screenshot-of-a-screenshot.
 
 ---
 
-*呢個網站由家庭助理自動生成。改 persona 記得同時改這邊，唔好兩邊脫節。*
+*呢個網站由家庭智能體自動生成。改 persona 記得同時改這邊，唔好兩邊脫節。*
 *Persona 設定：`dorapwn/family-agent-guides`（private）*

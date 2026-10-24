@@ -52,7 +52,7 @@
   <!-- labels -->
   <g fill="#e8e4dc" font-size="12.5">
     <text x="66"  y="50">你講：「幫我影 HKEAA 時間表」</text>
-    <text x="66"  y="114">助理開一個無頭瀏覽器</text>
+    <text x="66"  y="114">智能體開一個無頭瀏覽器</text>
     <text x="66"  y="176">去 hkeaa.edu.hk，等頁面載入完</text>
     <text x="66"  y="238">影一張圖，存低</text>
     <text x="66"  y="300">放上 GitHub，跟網頁一齊 publish</text>
@@ -79,6 +79,6 @@
     每一步都要等上一個做完先做下一步。
   </text>
   <text x="20" y="452" fill="#4a443c" font-size="10">
-    由助理自動畫成 SVG —— 放大都唔會模糊，可以直接印出嚟。
+    由智能體自動畫成 SVG —— 放大都唔會模糊，可以直接印出嚟。
   </text>
 </svg>

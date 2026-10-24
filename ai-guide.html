@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>用 AI 指南 — 家庭 AI 智能體</title>
+<meta name="description" content="點樣用 AI 先唔會出事：問法、核對、私隱、偏見、假消息。附香港個人資料私隱專員公署同 UNESCO 嘅指引。">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="kicker">GUIDE · 用 AI 指南</div>
+  <h1>用 AI，先學識問</h1>
+  <p class="sub">
+    AI 唔係搜索引擎，唔係老師，唔係朋友。
+    呢份指南教你點樣問、點樣核對、咩唔應該俾佢知。
+  </p>
+</header>
+
+<nav class="card" style="margin:28px 0;padding:14px 20px">
+  <a href="index.html">← 返主頁</a> ·
+  <a href="study.html">學業</a> ·
+  <a href="home.html">家務</a> ·
+  <a href="work.html">工作</a> ·
+  <a href="fun.html">玩樂</a> ·
+  <strong>用 AI 指南</strong> ·
+  <a href="tips.html">小技巧</a> ·
+  <a href="trouble.html">常見問題</a> ·
+  <a href="telegram.html">裝 Telegram</a> ·
+  <a href="wishlist.html">許願清單</a> ·
+  <a href="behind.html">幕後</a>
+</nav>
+
+<details class="toc">
+  <summary>呢頁有咩</summary>
+  <ol>
+    <li><a href="#ai-到底係咩">AI 到底係咩？</a></li>
+    <li><a href="#第-1-步-問得準">第 1 步：問得準</a></li>
+    <li><a href="#第-2-步-核對">第 2 步：核對</a></li>
+    <li><a href="#第-3-步-私隱">第 3 步：私隱</a></li>
+    <li><a href="#第-4-步-人嘅判斷">第 4 步：人嘅判斷</a></li>
+    <li><a href="#假消息同深度偽造">假消息同深度偽造</a></li>
+    <li><a href="#細路用-ai">細路用 AI</a></li>
+    <li><a href="#有咩唔好做">有咩唔好做</a></li>
+    <li><a href="#出處">出處</a></li>
+  </ol>
+</details>
+
+<h2 id="ai-到底係咩" style="border-top:none">AI 到底係咩？</h2>
+<p>
+  <strong>AI 係一個「砌嘢」嘅機器，唔係「識嘢」嘅機器。</strong>
+</p>
+<p>
+  佢讀過海量文字，記住咗啲模式。
+  你問一句，佢就按住嗰啲模式，一個字一個字砌出一段<strong>睇落好合理</strong>嘅說話。
+</p>
+
+<div class="tidbit">
+  <span class="kicker">小智識</span>
+  <p>
+    <strong>呢個分別好重要。</strong>
+    搜索引擎係<strong>搵返真嘅出處</strong>畀你，連結撳得開就一定存在。
+    AI 係<strong>砌一段似真嘅說話</strong>——流暢、有道理、可以完全係錯。
+    所以 AI 答嘢唔可以當「搵到」，要當「有人建議咁做」。
+  </p>
+</div>
+
+<p>用個類比：</p>
+<ul>
+  <li>搜索引擎係<strong>圖書館</strong>——書喺度，你攞去睇。</li>
+  <li>AI 係一個<strong>讀過好多書嘅人</strong>，靠記憶即場寫信畀你。</li>
+</ul>
+<p>
+  佢寫得好好，但佢<strong>唔記得自己睇過乜</strong>，亦都唔會話「我唔肯定」。
+  問佢「呢個係咩年份」，佢會即刻答一個年份出嚟。
+</p>
+
+<h2 id="第-1-步-問得準">第 1 步：問得準</h2>
+<p>同一個問題，問得準就相差十倍。以下幾招係最實用：</p>
+
+<h3>講清楚三樣嘢</h3>
+<div class="prompt">
+  <b>「幫我寫一封 email 俾老師，話下星期要請一日假，
+  原因係屋企有人入院，我要陪佢。
+  200 字以內，唔好太正式。」</b>
+</div>
+<p>
+  收件人（邊個）、內容（講咩）、限制（幾長、咩 tone）—— 三樣講齊，
+  就唔使來回問。
+</p>
+
+<h3>話明佢可以點做</h3>
+<div class="prompt">
+  <b>「唔好直接寫答案，講解點解咁做，等我自己諗。」</b><br>
+  <b>「先問我兩條問題，之後先出方案。」</b><br>
+  <b>「如果你唔肯定，就話唔肯定，唔好估。」</b>
+</div>
+<p>呢三句係同一個意思：<strong>你係幫手嘅，唔係代我做晒</strong>。</p>
+
+<h3>叫佢交出處</h3>
+<div class="prompt">
+  <b>「每個事實後面加埋出處網址。」</b><br>
+  <b>「只用官方網站。」</b>
+</div>
+<p>
+  叫佢俾出處，有一個好處：<strong>你順手就知要核對邊幾樣嘢</strong>。
+  冇出處嘅句子，通常就係最需要自己查嗰啲。
+</p>
+
+<div class="note">
+  <strong>唔使識寫 prompt。</strong>
+  用返平時講嘢嘅方式就得——「幫我睇下呢個」「呢個點算」「呢個點解」。
+  上面嗰啲只係例子，唔係公式。
+</div>
+
+<h2 id="第-2-步-核對">第 2 步：核對</h2>
+<p>呢步最容易被跳過，但係<strong>最重要嗰步</strong>。</p>
+
+<figure>
+  <img class="shot" src="assets/svg/flow-check.svg"
+       alt="用 AI 的正確次序流程圖：你講清楚要咩 → 智能體砌一段答案 → 你自己核對 → 先好用；旁邊一條叉路寫住唔核對就直接用，會出現假考試日期、假法規、假連結、假書名">
+  <figcaption class="small">
+    中間嗰步（自己核對）係成件事嘅重點。
+  </figcaption>
+</figure>
+
+<h3>「核對」具體係做咩？</h3>
+<ul>
+  <li><strong>開返佢畀嘅網址</strong>，自己開個視窗睇。連結會唔會通？內容係咪咁？</li>
+  <li><strong>搵第二個獨立來源。</strong>唔好同一個網站搵兩次當兩個來源。</li>
+  <li><strong>對返你哋傾過嗰段原文</strong>——佢有冇誇大咁講？</li>
+</ul>
+
+<h3>咩嘢一定要自己查？</h3>
+<div class="warn">
+  <ul style="margin:8px 0 0">
+    <li><strong>考試日期、報名期限</strong>（只信評核局 hkeaa.edu.hk）</li>
+    <li><strong>金額、deadline、地址、時間</strong></li>
+    <li><strong>法規、政府表格要求</strong>（只信 gov.hk 或部門官網）</li>
+    <li><strong>藥名、劑量、醫療建議</strong>——唔好靠 AI，問醫生</li>
+    <li><strong>會唔會有人受影響嘅決定</strong>（見下面第 4 步）</li>
+  </ul>
+</div>
+
+<div class="note">
+  <strong>出唔到處，就唔好當佢係真。</strong>
+  問「你講呢個嘅出處係邊？」——如果佢答唔出，或者俾一個你開唔到嘅連結，
+  咁就係砌出嚟嘅。呢個唔係罕見，係常見。
+</div>
+
+<h2 id="第-3-步-私隱">第 3 步：私隱</h2>
+<p>香港個人資料私隱專員公署（PCPD）有《10 TIPS for Users of AI Chatbots》，
+以下係入面最貼身嗰幾條：</p>
+
+<ul>
+  <li><strong>唔好貼自己嘅真名。</strong>用代號：「家長A」「學生B」「個案 #3」。</li>
+  <li><strong>唔好貼其他人嘅個人資料</strong>——客戶、學生、同事嘅名、身份證號碼、電話、地址。</li>
+  <li><strong>唔好貼機密文件</strong>——未公開嘅報告、內部會議文件、任何「仲未出街」嘅嘢。</li>
+  <li><strong>只喺官方渠道裝 app</strong>，唔好裝不明第三方版本。</li>
+  <li><strong>喺設定入面關咗「分享對話記錄」</strong>（如果個 app 有呢個選項）。</li>
+  <li><strong>定期刪舊對話</strong>，唔用嘅帳號就登出。</li>
+</ul>
+
+<div class="warn">
+  <b>PCPD 第 10 點特別講：</b>
+  <strong>老師同家長應該俾學生指引</strong>，因為 AI chatbot 可能設最低年齡，
+  亦可能要求未成年用戶先得到家長同意。
+  佢哋可以叫 AI「用適合年齡嘅方式答」，減少細路接觸唔合宜內容嘅機會。
+</div>
+
+<div class="note">
+  <strong>呢個屋企嘅智能體已經做咗一部分。</strong>
+  客戶、學生嘅可識別資料唔會寫入記憶、唔會寫入檔案、唔會傳去外部服務；
+  每次傾論會用代號。
+  詳細睇 <a href="work.html">工作指南</a>。
+</div>
+
+<h2 id="第-4-步-人嘅判斷">第 4 步：人嘅判斷</h2>
+<p>AI 唔識分辨「重要」同「唔緊要」。以下幾樣，交返俾人：</p>
+
+<table>
+  <tr><th>邊度用 AI</th><th>點解要你自己決定</th></tr>
+  <tr><td>交功課、做essay</td><td>可以講解法、出題、check答案；<strong>唔可以代寫</strong>。咁樣根本學唔到嘢。</td></tr>
+  <tr><td>醫療、法律、財務</td><td>可以解釋文件、準備問題清單；<strong>唔可以俾意見</strong>。</td></tr>
+  <tr><td>情緒輔導</td><td>唔做。唔好用 AI 頂替真人支援。</td></tr>
+  <tr><td>人生決定</td><td>可以幫你列選項、列利弊；<strong>最後嗰句「你想點」留返俾你</strong>。</td></tr>
+  <tr><td>影響別人嘅事</td><td>客戶、學生、同事嘅下場，唔係你或者 AI 嘅事——你哋兩個都要睇清楚。</td></tr>
+</table>
+
+<div class="tidbit">
+  <span class="kicker">小智識</span>
+  <p>
+    <strong>UNESCO 嘅十項核心原則</strong>，其中三項最好記：
+    <strong>唔傷害</strong>（唔好用 AI 嚟做一件你唔敢同人講嘅事）、
+    <strong>人手監督</strong>（AI 唔會攞走你嘅責任同問責）、
+    <strong>透明</strong>（應該講得清佢點解咁答）。
+    完整嘅十項喺
+    <a href="https://www.unesco.org/en/artificial-intelligence/recommendation-ethics"
+       target="_blank" rel="noopener">UNESCO 官方網頁</a>。
+  </p>
+</div>
+
+<h2 id="假消息同深度偽造">假消息同深度偽造</h2>
+<p>呢個世界最需要警惕嘅唔係 AI 答錯問題，係<strong>AI 生成嘅內容睇落似新聞</strong>。</p>
+
+<h3>三個要留意嘅徵兆</h3>
+<ul>
+  <li><strong>太快。</strong>喺你未睇過原文之前，已經有人話「網上爆咗」。</li>
+  <li><strong>太齊整。</strong>每段都三句、每句都同式，冇矛盾冇例外——真實世界唔係咁。</li>
+  <li><strong>有圖冇出處。</strong>一張相好逼真，但搵唔返原始出處。</li>
+</ul>
+
+<h3>深度偽造（deepfake）</h3>
+<p>
+  AI 可以造出一段<strong>扮成真人講嘢</strong>嘅影片或者聲音。
+  PCPD 2025 年出咗一套《Abuse of AI Deepfakes: Toolkit for Schools and Parents》，
+  專門畀學校同家長用。
+</p>
+<div class="warn">
+  <b>呢個屋企要知嘅：</b>
+  <ul style="margin:8px 0 0">
+    <li>有人叫你即刻轉錢、睇條片就即刻做嘢 —— <strong>停低，搵第二個人確認</strong>。</li>
+    <li>同學 send 咗一段「朋友」嘅影片，話係佢要借錢 —— 直接打個電話俾佢。</li>
+    <li>有人話係屋企人，但語氣唔似 —— 問一句只有你哋知嘅嘢。</li>
+  </ul>
+</div>
+
+<h3>AI 生成嘅圖片，點樣知？</h3>
+<ul>
+  <li>手指、手、牙齒、字——<strong>經常唔對</strong>（但唔好只靠呢個，愈做愈好）</li>
+  <li>對唔上嘅光影、鏡頭反光、背景嘅直線</li>
+  <li>搵唔返原始出處、或者所有「出處」都係同一個網站</li>
+</ul>
+<p>
+  最穩陣嘅做法：<strong>如果你唔知呢張圖係邊度嚟，就唔好信，唔好轉發。</strong>
+</p>
+
+<h2 id="細路用-ai">細路用 AI</h2>
+<p>呢一節係畀大女同細女嘅家長睇嘅，佢哋自己都應該睇一次。</p>
+
+<ul>
+  <li><strong>AI 可以幫温習，唔可以幫交功课。</strong>呢個係底線。</li>
+  <li><strong>可以叫 AI 出題、改題、解釋步驟。</strong>但答案要自己諗。</li>
+  <li><strong>細路唔應該自己開帳號。</strong>要大人一齊裝、一齊登記。</li>
+  <li><strong>傾偈有底線。</strong>唔好將真名、住址、學校名、朋友嘅事講入去。</li>
+  <li><strong>AI 答錯唔會apologize。</strong>佢會好流暢咁繼續錯落去——所以要人睇。</li>
+</ul>
+
+<div class="note">
+  <strong>最重要嗰句：</strong>
+  AI 唔會攞走你嘅責任。
+  如果一件事做錯咗要有人負責，嗰個人一定唔會係 AI。
+</div>
+
+<h2 id="有咩唔好做">有咩唔好做</h2>
+<table>
+  <tr><th>唔好做</th><th>因為</th></tr>
+  <tr><td>直接貼學生／客戶嘅姓名身份證號碼</td><td>資料一旦離開你部機，你就唔知佢去咗邊</td></tr>
+  <tr><td>將 AI 嘅答案當考試日期、金額、法規</td><td>砌出嚟嘅似真嘢，睇落最似真</td></tr>
+  <tr><td>用 AI 代寫essay、報告、email 代發</td><td>交出去嘅係你個名，唔係 AI 個名</td></tr>
+  <tr><td>聽 AI 講唔好覆核就 send 個 email 出去</td><td>代發嘅後果係你嘅</td></tr>
+  <tr><td>同 AI 講真名去查嘢</td><td>代號一樣得，唔會冇咗效果</td></tr>
+  <tr><td>因為「AI 話咗」就唔再查</td><td>AI 會話錯，而且講得好有自信</td></tr>
+</table>
+
+<div class="note">
+  <strong>最實用嗰句：</strong>
+  當 AI 係一個<strong>好有耐性但冇學歷嘅實習生</strong>——
+  佢可以幫你做第一步，但最後嗰個簽名嘅係你。
+</div>
+
+<h2 id="出處">出處</h2>
+<p>呢頁嘅原則唔係我作出嚟，係有出處㗎：</p>
+<ul>
+  <li><a href="https://www.pcpd.org.hk/english/resources_centre/publications/files/ai_chatbot_leaflet.pdf"
+     target="_blank" rel="noopener">PCPD《10 TIPS for Users of AI Chatbots》(2023)</a>
+    —— 私隱、假 app、查證、敏感資料、家長指引</li>
+  <li><a href="https://www.pcpd.org.hk/english/resources_centre/publications/files/ai_deepfake.pdf"
+     target="_blank" rel="noopener">PCPD《Abuse of AI Deepfakes: Toolkit for Schools and Parents》(2025)</a>
+    —— 深度偽造，畀學校同家長</li>
+  <li><a href="https://www.pcpd.org.hk/english/resources_centre/publications/files/guidance_ethical_e.pdf"
+     target="_blank" rel="noopener">PCPD《Guidance on the Ethical Development and Use of AI》</a>
+    —— 倫理框架</li>
+  <li><a href="https://www.pcpd.org.hk/english/resources_centre/publications/files/ai_protection_framework.pdf"
+     target="_blank" rel="noopener">PCPD《AI: Model Personal Data Protection Framework》</a>
+    —— 個人資料保護框架</li>
+  <li><a href="https://www.unesco.org/en/artificial-intelligence/recommendation-ethics"
+     target="_blank" rel="noopener">UNESCO《Recommendation on the Ethics of AI》(2021)</a>
+    —— 十項核心原則，193 個會員國通過嘅第一份全球標準</li>
+  <li><a href="https://www.nist.gov/itl/ai-risk-management-framework"
+     target="_blank" rel="noopener">NIST AI Risk Management Framework</a>
+    —— 風險管理框架，2023 年 1 月發布</li>
+</ul>
+
+<p>
+  呢份網站嘅源碼喺
+  <a href="https://github.com/dorapwn/family-agent-site"
+     target="_blank" rel="noopener">GitHub</a>。
+  想改可以直接改。
+</p>
+
+<footer>
+  <p><a href="index.html">← 返主頁</a></p>
+</footer>
+</div>
+</body>
+</html>

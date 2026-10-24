@@ -194,7 +194,7 @@ with sync_playwright() as p:
     check("request was attempted", len(received) == 1, len(received))
     msg = pg.inner_text("#preview")
     check("tells the user it did not save", "送唔到" in msg, msg)
-    check("offers the talk-to-the-agent fallback", "直接同助理講" in msg, msg)
+    check("offers the talk-to-the-agent fallback", "直接同智能體講" in msg, msg)
     check("does NOT clear the form (nothing lost)",
           pg.input_value("#what") == "測試違規", pg.input_value("#what"))
     b.close()

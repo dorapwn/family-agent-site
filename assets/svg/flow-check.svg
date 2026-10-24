@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 480" width="620" height="480"
+     font-family="ui-monospace, 'DejaVu Sans Mono', Menlo, monospace">
+  <rect width="620" height="480" fill="#12110f"/>
+
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#e8a33d"/>
+    </marker>
+    <marker id="ahx" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#e2695a"/>
+    </marker>
+    <marker id="aht" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4fd0c4"/>
+    </marker>
+  </defs>
+
+  <text x="20" y="28" fill="#e8a33d" font-size="14">用 AI 嘅正確次序</text>
+
+  <!-- the main path -->
+  <g stroke="#e8a33d" stroke-width="1.6" fill="none" marker-end="url(#ah)">
+    <path d="M 144 70 L 144 100"/>
+    <path d="M 144 140 L 144 170"/>
+    <path d="M 144 210 L 144 240"/>
+  </g>
+
+  <g fill="#1a1815" stroke="#4a443c" stroke-width="1.2">
+    <rect x="26" y="30"  width="236" height="40" rx="6"/>
+    <rect x="26" y="100" width="236" height="40" rx="6"/>
+    <rect x="26" y="240" width="236" height="40" rx="6"/>
+  </g>
+  <!-- the check step is the one that matters, so it gets the strong border -->
+  <rect x="26" y="170" width="236" height="40" rx="6"
+        fill="#0d1a19" stroke="#4fd0c4" stroke-width="2"/>
+
+  <g fill="#e8a33d">
+    <circle cx="46" cy="50" r="11"/><circle cx="46" cy="120" r="11"/>
+    <circle cx="46" cy="190" r="11"/><circle cx="46" cy="260" r="11"/>
+  </g>
+  <g fill="#12110f" font-size="12" text-anchor="middle" font-weight="bold">
+    <text x="46" y="54">1</text><text x="46" y="124">2</text>
+    <text x="46" y="194">3</text><text x="46" y="264">4</text>
+  </g>
+
+  <g fill="#e8e4dc" font-size="13">
+    <text x="68" y="54">你講清楚要咩</text>
+    <text x="68" y="124">智能體砌一段答案</text>
+    <text x="68" y="194" fill="#4fd0c4">你自己核對</text>
+    <text x="68" y="264">先好用</text>
+  </g>
+
+  <!-- the branch you must not take -->
+  <path d="M 262 120 L 292 120" stroke="#e2695a" stroke-width="1.6"
+        fill="none" marker-end="url(#ahx)"/>
+  <g>
+    <rect x="300" y="82" width="294" height="76" rx="6"
+          fill="#1a1210" stroke="#e2695a" stroke-width="1.4"/>
+    <circle cx="572" cy="100" r="11" fill="#e2695a"/>
+    <path d="M 567 95 L 577 105 M 577 95 L 567 105"
+          stroke="#12110f" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+    <text x="314" y="104" fill="#e2695a" font-size="12.5" font-weight="bold">唔核對就直接用</text>
+    <g fill="#a09a8e" font-size="11.5">
+      <text x="314" y="124">AI 會砌出似真嘅假料：</text>
+      <text x="314" y="142">假考試日期、假法規、假連結、假書名</text>
+    </g>
+  </g>
+
+  <!-- what checking actually means -->
+  <path d="M 262 190 L 292 190" stroke="#4fd0c4" stroke-width="1.6"
+        fill="none" marker-end="url(#aht)"/>
+  <g>
+    <rect x="300" y="180" width="294" height="102" rx="6"
+          fill="#0d1a19" stroke="#4fd0c4" stroke-width="1.4"/>
+    <text x="314" y="202" fill="#4fd0c4" font-size="12.5" font-weight="bold">第 3 步：核對 = 做三件事</text>
+    <g fill="#e8e4dc" font-size="11.5">
+      <text x="314" y="224">1. 開返佢畀嘅網址，自己開個視窗睇</text>
+      <text x="314" y="244">2. 搵第二個獨立來源（唔好同一站搵兩次）</text>
+      <text x="314" y="264">3. 對返你哋傾過嗰段原文</text>
+    </g>
+  </g>
+
+  <!-- the rule, in one line -->
+  <g>
+    <rect x="26" y="310" width="568" height="58" rx="6"
+          fill="#1a1410" stroke="#e8a33d" stroke-width="1.2"/>
+    <text x="44" y="334" fill="#e8a33d" font-size="13">第 3 步冇做，前面兩步都白做。</text>
+    <text x="44" y="356" fill="#a09a8e" font-size="12">AI 砌得似真，唔等於係真。</text>
+  </g>
+
+  <text x="26" y="398" fill="#4fd0c4" font-size="11.5">
+    考試日期、金額、提交期限、藥名、地址 —— 呢啲一定要自己查。
+  </text>
+  <text x="26" y="420" fill="#a09a8e" font-size="11.5">
+    唔止查「答案啱唔啱」，仲要查「呢個答案係咪講緊你問嗰樣嘢」。
+  </text>
+  <text x="26" y="456" fill="#4a443c" font-size="10">由智能體自動畫成 SVG。</text>
+</svg>

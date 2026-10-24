@@ -45,7 +45,7 @@
     <text x="66" y="173">砌成一句說話</text>
     <text x="66" y="233">叫醒 Telegram</text>
     <text x="66" y="293">訊息已經幫你打好</text>
-    <text x="66" y="353">你撳個 send → 助理收到</text>
+    <text x="66" y="353">你撳個 send → 智能體收到</text>
   </g>
 
   <!-- what the assembled message looks like -->
@@ -58,7 +58,7 @@
       <text x="336" y="212">邊個：細女</text>
       <text x="336" y="230">想要：影張相就記低做咗咩</text>
       <text x="336" y="248">原因：唔想打字</text>
-      <text x="336" y="266">幾想要：5/5</text>
+      <text x="336" y="266">幾想要：好想要</text>
     </g>
     <path d="M 312 200 L 322 200" stroke="#4fd0c4" stroke-width="1.2"
           stroke-dasharray="3 3" fill="none"/>
@@ -85,6 +85,6 @@
     淨係喺你部機同 Telegram 之間。
   </text>
   <text x="26" y="458" fill="#4a443c" font-size="10">
-    由助理自動畫成 SVG。
+    由智能體自動畫成 SVG。
   </text>
 </svg>

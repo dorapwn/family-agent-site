@@ -72,21 +72,21 @@
       body: JSON.stringify(row)
     }).then(function (res) {
       if (res.ok) {
-        preview.textContent = "收到，唔使再撳。助理會記低。";
+        preview.textContent = "收到，唔使再撳。智能體會記低。";
         form.reset();
         // Keep the Telegram copy as a backup path in case the row is later
         // judged spam: the agent can always ask the user directly.
         console.log("wish recorded", row.who, new Date().toISOString());
       } else {
         return res.text().then(function (t) {
-          preview.textContent = "送唔到。請直接同助理講：「" +
+          preview.textContent = "送唔到。請直接同智能體講：「" +
             row.what + "」—— 我幫你記低。";
           console.warn("supabase rejected:", res.status, t);
         });
       }
     }).catch(function (err) {
       preview.textContent = "而家 send 唔到（可能offline）。" +
-        "請撳多一次，或者直接同助理講。";
+        "請撳多一次，或者直接同智能體講。";
       console.warn("supabase unreachable:", err);
     });
   });
