@@ -35,7 +35,15 @@ ASSETS = ["assets/four-rooms.mp4", "assets/img/poster.png",
           "assets/svg/flow-publish.svg", "assets/svg/flow-ascii.svg",
           "assets/svg/flow-wishlist.svg", "assets/svg/hall-of-fame.svg",
           "assets/ascii/four_rooms.py", "style.css",
+          "assets/js/deck.js",
+          "scripts/build_slides.py", "scripts/capture_su.py",
+          "assets/img/su-home.jpg", "assets/img/su-banners.jpg",
+          "assets/img/su-orgchart-top.jpg",
           "supabase/submit.js", "supabase/wishlist.sql"]
+
+# The slide deck. Seven slides, referenced from tips.html.
+SLIDE_DIR = os.path.join(ROOT, "assets", "svg", "slides")
+SLIDE_COUNT = 7
 
 # One canonical order for the whole site. The four guides come first because
 # they are what a user came for; behind-the-scenes is last because it is the
@@ -190,6 +198,94 @@ def check_animated_svg_in_object(name: str, src: str) -> None:
             f"— use <object> so prefers-reduced-motion is honoured")
 
 
+def check_deck_consistency(name: str, src: str) -> None:
+    """The deck's slide count must match what the page and the JS expect.
+
+    Three things can drift apart: the slide SVG files on disk, the <object>
+    elements in the page, and the "1 / 7" label the script writes. If a slide
+    is added to disk but not to the page, the deck silently ends short; if the
+    page references a slide that was deleted, it shows a blank frame.
+
+    Checked together, because none of them is meaningful alone.
+    """
+    if 'id="deck"' not in src:
+        return
+
+    # The slides the page actually embeds.
+    embedded = re.findall(r'class="slide[^"]*"[^>]*data="([^"]+)"', src)
+    if not embedded:
+        err(f"{name}: deck has no <object class=\"slide\"> elements")
+        return
+
+    for ref in embedded:
+        target = os.path.normpath(os.path.join(ROOT, os.path.dirname(name), ref))
+        if not os.path.exists(target):
+            err(f"{name}: deck slide {ref} -> missing on disk")
+
+    # The slides that exist on disk but are not embedded.
+    if os.path.isdir(SLIDE_DIR):
+        on_disk = sorted(f for f in os.listdir(SLIDE_DIR)
+                         if f.endswith(".svg"))
+        used = {os.path.basename(r) for r in embedded}
+        for f in on_disk:
+            if f not in used:
+                err(f"{name}: assets/svg/slides/{f} exists but is not "
+                    f"embedded in the deck")
+
+    # The label in the markup must match the number of slides.
+    m = re.search(r'id="deck-pos"[^>]*>\s*(\d+)\s*/\s*(\d+)\s*<', src)
+    if m:
+        pos, total = int(m.group(1)), int(m.group(2))
+        if total != len(embedded):
+            err(f"{name}: deck label says {total} slides but "
+                f"{len(embedded)} are embedded")
+        if pos != 1:
+            err(f"{name}: deck label starts at {pos}, should start at 1")
+    if len(embedded) != SLIDE_COUNT:
+        err(f"{name}: deck has {len(embedded)} slides, expected {SLIDE_COUNT}")
+
+    # Every slide must carry a title and a desc for screen readers.
+    for ref in embedded:
+        target = os.path.normpath(os.path.join(ROOT, os.path.dirname(name), ref))
+        if not os.path.exists(target):
+            continue
+        body = open(target, encoding="utf-8").read()
+        if "<title" not in body:
+            err(f"{name}: slide {os.path.basename(ref)} has no <title>")
+        if "<desc" not in body:
+            err(f"{name}: slide {os.path.basename(ref)} has no <desc>")
+
+
+def check_deck_images_exist(name: str, src: str) -> None:
+    """Every <image> in a slide must point at a file that exists.
+
+    The slides live in assets/svg/slides/ and reference photos with relative
+    paths (../../img/su-home.jpg). Those resolve inside the SVG document, so
+    a broken reference shows up as an empty frame rather than a build error —
+    the slide still parses as valid XML and the deploy still passes.
+
+    Caught by looking at the rendered deck: slide 7's banner was cropped to
+    nothing, and slides 1/3's photos were silently missing.
+    """
+    if 'id="deck"' not in src:
+        return
+
+    for ref in re.findall(r'class="slide[^"]*"[^>]*data="([^"]+)"', src):
+        slide = os.path.normpath(os.path.join(ROOT, os.path.dirname(name), ref))
+        if not os.path.exists(slide):
+            continue
+        body = open(slide, encoding="utf-8").read()
+        for href in re.findall(r'<image[^>]*href="([^"]+)"', body):
+            if href.startswith(("http://", "https://", "data:")):
+                continue
+            target = os.path.normpath(
+                os.path.join(os.path.dirname(slide), href))
+            if not os.path.exists(target):
+                line = src.count("\n", 0, src.index(ref)) + 1
+                err(f"{name}:{line}: slide {os.path.basename(ref)} "
+                    f"references missing image '{href}'")
+
+
 def check_markdown(name: str, src: str) -> None:
     # Strip code spans and <code> blocks first: a page may legitimately
     # quote the literal marker (e.g. documenting the very bug this checks).
@@ -228,6 +324,8 @@ def main() -> int:
         check_no_nested_p(name, src)
         check_no_ascii_flowcharts(name, src)
         check_animated_svg_in_object(name, src)
+        check_deck_consistency(name, src)
+        check_deck_images_exist(name, src)
         check_markdown(name, src)
         check_refs(name, src)
 
@@ -301,17 +399,21 @@ def main() -> int:
         else:
             print(f"  who ok   {len(opts)} names match the constraint")
 
-    svg_dir = os.path.join(ROOT, "assets", "svg")
-    if os.path.isdir(svg_dir):
-        for f in sorted(os.listdir(svg_dir)):
-            if not f.endswith(".svg"):
-                continue
-            p = os.path.join(svg_dir, f)
-            try:
-                xml.dom.minidom.parse(p)
-                print(f"  svg ok   {f}")
-            except Exception as exc:
-                err(f"assets/svg/{f}: not valid XML ({exc})")
+    # SVG well-formedness, checked recursively: the slide deck lives in
+    # assets/svg/slides/.
+    svg_root = os.path.join(ROOT, "assets", "svg")
+    if os.path.isdir(svg_root):
+        for dirpath, _dirs, files in os.walk(svg_root):
+            for f in sorted(files):
+                if not f.endswith(".svg"):
+                    continue
+                p = os.path.join(dirpath, f)
+                rel = os.path.relpath(p, ROOT)
+                try:
+                    xml.dom.minidom.parse(p)
+                    print(f"  svg ok   {rel}")
+                except Exception as exc:
+                    err(f"{rel}: not valid XML ({exc})")
 
     if errors:
         print(f"\nFAILED ({len(errors)}):", file=sys.stderr)

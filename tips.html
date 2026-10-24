@@ -5,15 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>小技巧 — 家庭 AI 智能體</title>
 <link rel="stylesheet" href="style.css">
+<script src="assets/js/deck.js" defer></script>
 </head>
 <body>
 <div class="wrap">
 <header>
   <div class="kicker">TIPS · 小技巧</div>
-  <h1>兩個好有用嘅小技巧</h1>
+  <h1>畫圖、影片，同簡報</h1>
   <p class="sub">
     畫圖同做短片，唔係用畫圖軟件，係用幾行「文字」寫出嚟。
-    學識咗呢兩招，你自己都做得到。
+    學識咗呢幾招，你自己都做得到——包括做一套可以撳箭嘴逐頁睇嘅簡報。
   </p>
 </header>
 
@@ -36,6 +37,7 @@
     <li><a href="#一-畫圖-svg">一、畫圖：SVG</a></li>
     <li><a href="#二-短片-ascii-動畫">二、短片：ASCII 動畫</a></li>
     <li><a href="#三-會郁嘅-svg-復古街機排行榜">三、會郁嘅 SVG：復古街機排行榜</a></li>
+    <li><a href="#四-做一套簡報-學生會投票指南">四、做一套簡報：學生會投票指南</a></li>
     <li><a href="#點解唔直接叫智能體畫張相出嚟">點解唔直接叫智能體畫張相出嚟？</a></li>
     <li><a href="#一句記住">一句記住</a></li>
   </ol>
@@ -201,6 +203,125 @@
   唔使問，已經自動停。
   如果你部手機開咗「減少動態效果」（慳電模式），
   呢啲圖就會定喺一格，淨係睇唔郁。
+</div>
+
+<h2 id="四、做一套簡報：學生會投票指南">四、做一套簡報：學生會投票指南</h2>
+
+<p>
+  上面三招都係<strong>畫圖</strong>。想做一套可以撳箭嘴逐頁睇嘅
+  <strong>簡報</strong>？做法一樣——每一頁都係一個 SVG 檔案，
+  用 JavaScript 控制邊頁顯示。
+</p>
+
+<div class="deck" id="deck">
+  <object class="slide on" type="image/svg+xml" data="assets/svg/slides/slide-1.svg"
+          aria-label="第 1 頁，共 7 頁：學生會點解要投票"></object>
+  <object class="slide" type="image/svg+xml" data="assets/svg/slides/slide-2.svg"
+          aria-label="第 2 頁，共 7 頁：學生會實際做啲咩，82 個學生社團、六大分類" aria-hidden="true"></object>
+  <object class="slide" type="image/svg+xml" data="assets/svg/slides/slide-3.svg"
+          aria-label="第 3 頁，共 7 頁：學生會架構，邊個做主" aria-hidden="true"></object>
+  <object class="slide" type="image/svg+xml" data="assets/svg/slides/slide-4.svg"
+          aria-label="第 4 頁，共 7 頁：你嘅一票決定邊個做主" aria-hidden="true"></object>
+  <object class="slide" type="image/svg+xml" data="assets/svg/slides/slide-5.svg"
+          aria-label="第 5 頁，共 7 頁：點樣投票，入會三步同選舉細節" aria-hidden="true"></object>
+  <object class="slide" type="image/svg+xml" data="assets/svg/slides/slide-6.svg"
+          aria-label="第 6 頁，共 7 頁：投票前要睇啲咩" aria-hidden="true"></object>
+  <object class="slide" type="image/svg+xml" data="assets/svg/slides/slide-7.svg"
+          aria-label="第 7 頁，共 7 頁：去投你嘅一票" aria-hidden="true"></object>
+  <div class="deck-bar">
+    <button id="deck-prev" type="button" aria-label="上一頁">← 上一頁</button>
+    <span class="deck-pos" id="deck-pos" aria-live="polite">1 / 7</span>
+    <button id="deck-next" type="button" aria-label="下一頁">下一頁 →</button>
+    <span class="deck-hint">方向鍵 / 空格 / 左右掃</span>
+  </div>
+</div>
+
+<h3>每頁係點樣整出嚟？</h3>
+
+<p>
+  每頁 SVG 都係一個檔案，內容分三部分：
+</p>
+
+<ul>
+  <li><strong>相</strong> —— 用瀏覽器影低嘅真實網頁截圖，
+      直接用 <code>&lt;image&gt;</code> 放落去</li>
+  <li><strong>字</strong> —— 標題、項目、清單，全部係 SVG 文字</li>
+  <li><strong>框</strong> —— 邊框、色塊、圓角，<code>&lt;rect&gt;</code> 畫</li>
+</ul>
+
+<p>
+  因為三樣嘢都係代碼，所以想改個標題、改個相、改個顏色，
+  全部都係改幾行字。
+</p>
+
+<div class="note">
+  <strong>個相係真嘅。</strong>
+  呢套簡報入面每張相，都係用瀏覽器實際開咗學生會網頁影落嚟，
+  唔係搵出嚟嘅 stock 相。
+  影相嘅步驟寫成咗一個 Python 檔案（<code>capture_su.py</code>），
+  隨時可以重影過。
+</div>
+
+<h3>簡報上面嘅資料係幾時查？</h3>
+
+<p>
+  <strong>2026 年 10 月 24 日</strong>，用瀏覽器逐頁查過
+  <a href="https://hkustsu.hkust.edu.hk" target="_blank" rel="noopener">學生會網站</a>。
+  例如「82 個社團」係數學生會自己個社團下拉名單得返嘅
+  （83 項入面有一項叫 <code>test Society</code>，係測試用嘅），
+  六大分類亦係網站自己嘅標題。
+  唔係估嘅。
+</p>
+
+<div class="note">
+  <strong>資料會變。</strong>
+  社團數目、選舉職位、規則都可能改。
+  投票之前最好自己再睇一次學生會網站。
+</div>
+
+<h3>要自己整過？</h3>
+
+<div class="prompt">
+  <b>「幫我整一套簡報，講⋯⋯，用 SVG 做」</b><br>
+  <b>「呢套簡報加多一頁，講⋯⋯」</b><br>
+  <b>「簡報每頁加個頁碼／改個主題色」</b>
+</div>
+
+<h3>做簡報最易踩嘅坑</h3>
+
+<table>
+  <tr><th>問題</th><th>點解</th><th>點解決</th></tr>
+  <tr>
+    <td>撳箭嘴會卡</td>
+    <td>用咗 <code>display:none</code> 收埋啲未顯示嘅頁</td>
+    <td>改用移出畫面嘅方法——咁樣每頁一開始就已經載入咗</td>
+  </tr>
+  <tr>
+    <td>相唔出現</td>
+    <td>SVG 用 <code>&lt;img&gt;</code> 入面冇權讀外部檔案</td>
+    <td>用 <code>&lt;object&gt;</code>，佢係一個真正嘅網頁文件</td>
+  </tr>
+  <tr>
+    <td>中文字變晒樣</td>
+    <td>冇指定中文字型</td>
+    <td>喺 SVG 度寫明 PingFang / Noto CJK</td>
+  </tr>
+  <tr>
+    <td>啲字唔知幾長</td>
+    <td>手寫 SVG 唔知排版幾時爆</td>
+    <td>用 Python 計字嘅長度，唔好靠估</td>
+  </tr>
+</table>
+
+<div class="note">
+  <strong>原始碼：</strong>
+  <a href="https://github.com/dorapwn/family-agent-site/blob/main/scripts/build_slides.py"
+     target="_blank" rel="noopener">build_slides.py（GitHub）</a>——
+  簡報全部七頁都係呢個 Python 檔案生成嘅，
+  所以想加頁、改內容，跑一次就得。
+  影相嘅步驟喺
+  <a href="https://github.com/dorapwn/family-agent-site/blob/main/scripts/capture_su.py"
+     target="_blank" rel="noopener">capture_su.py（GitHub）</a>。
 </div>
 
 <h2 id="點解唔直接叫智能體畫張相出嚟">點解唔直接叫智能體畫張相出嚟？</h2>

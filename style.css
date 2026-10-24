@@ -127,6 +127,29 @@
   p code,li code,td code{background:#0d0f12;padding:2px 6px;border-radius:4px;
     font-size:14px;color:var(--amber)}
 
+  /* Slide deck. Only the current <object> is on screen; the others are moved
+     off-screen rather than display:none, because a display:none <object>
+     never loads its document and the deck would stutter on every press. */
+  .deck{position:relative;margin:24px 0;border:1px solid var(--line);
+    border-radius:10px;overflow:hidden;background:#0a0a0c}
+  .deck object.slide{display:block;width:100%;height:auto;
+    position:absolute;left:-99999px;top:0}
+  .deck object.slide.on{position:relative;left:0}
+  .deck-bar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+    padding:12px 14px;border-top:1px solid var(--line);background:var(--card)}
+  .deck-bar button{background:var(--paper);color:var(--ink);cursor:pointer;
+    border:1px solid var(--line);border-radius:6px;padding:9px 16px;
+    font-family:inherit;font-size:15px;min-height:44px}
+  .deck-bar button:hover{border-color:var(--amber);color:var(--amber)}
+  .deck-bar button:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
+  .deck-pos{font-family:var(--mono);font-size:15px;color:var(--ink-dim);
+    min-width:4.5em;text-align:center}
+  .deck-hint{font-size:12px;color:var(--ink-dim);margin-left:auto}
+  @media (max-width:600px){
+    .deck-hint{display:none}
+    .deck-bar{justify-content:center}
+  }
+
   footer{border-top:1px solid var(--line);margin-top:64px;padding-top:24px;
     color:var(--ink-dim);font-size:13px}
   .tag{display:inline-block;border:1px solid var(--line);border-radius:20px;

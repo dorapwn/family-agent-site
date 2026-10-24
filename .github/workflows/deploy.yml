@@ -64,6 +64,8 @@ jobs:
                    assets/svg/flow-capture.svg assets/svg/flow-publish.svg \
                    assets/svg/flow-ascii.svg assets/svg/flow-wishlist.svg \
                    assets/svg/hall-of-fame.svg \
+                   assets/svg/slides/slide-1.svg assets/svg/slides/slide-7.svg \
+                   assets/img/su-home.jpg assets/img/su-banners.jpg \
                    supabase/submit.js supabase/wishlist.sql; do
             c=$(curl -s -o /dev/null -w '%{http_code}' "$url/$p")
             echo "  HTTP $c  /$p"
