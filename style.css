@@ -150,24 +150,25 @@
     .deck-bar{justify-content:center}
   }
 
-  /* Store badges. Big enough to tap on a phone, and each one says where it
-     goes in its own words, so nobody has to know which store they have. */
-  .stores{display:flex;gap:12px;flex-wrap:wrap;margin:24px 0}
-  .store{display:flex;align-items:center;gap:12px;text-decoration:none;
+  /* Store badges. Both sit on one row and stay small; the label does the
+     work, the icon is just a landmark. */
+  .stores{display:flex;gap:10px;flex-wrap:nowrap;margin:24px 0}
+  .store{display:flex;align-items:center;gap:9px;text-decoration:none;
     color:var(--ink);background:var(--card);border:1px solid var(--line);
-    border-radius:10px;padding:12px 20px;min-height:64px;flex:1 1 220px;
-    transition:.15s}
+    border-radius:8px;padding:9px 14px;min-height:48px;flex:1 1 0;
+    min-width:0;transition:.15s}
   .store:hover{border-color:var(--amber);transform:translateY(-2px)}
   .store:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
-  .store-ico{width:30px;height:30px;flex:none;color:var(--ink)}
-  .store-txt{display:flex;flex-direction:column;line-height:1.25}
-  .store-txt small{font-size:11px;color:var(--ink-dim);letter-spacing:.02em}
-  .store-txt strong{font-size:17px;font-weight:600}
+  .store-ico{width:19px;height:19px;flex:none;color:var(--ink)}
+  .store-txt{display:flex;flex-direction:column;line-height:1.2;min-width:0}
+  .store-txt small{font-size:10px;color:var(--ink-dim);white-space:nowrap;
+    overflow:hidden;text-overflow:ellipsis}
+  .store-txt strong{font-size:14px;font-weight:600;white-space:nowrap}
   .store-ios:hover .store-ico{color:#a9c8f5}
   .store-android:hover .store-ico{color:#8ee6a0}
   @media (max-width:600px){
-    .stores{flex-direction:column}
-    .store{flex:1 1 auto}
+    .stores{flex-wrap:wrap}
+    .store{flex:1 1 calc(50% - 5px)}
   }
 
   /* A bare web address, big enough to read and tap. */
