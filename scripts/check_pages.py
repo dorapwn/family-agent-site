@@ -32,7 +32,8 @@ CONTAINERS = ["html", "head", "body", "div", "figure", "figcaption", "table",
 ASSETS = ["assets/four-rooms.mp4", "assets/img/poster.png",
           "assets/img/hkeaa-dse-dates.png", "assets/img/hermes-voice-mode.png",
           "assets/svg/mock-scores.svg", "assets/svg/flow-capture.svg",
-          "assets/svg/flow-publish.svg", "assets/svg/flow-ascii.svg", "assets/svg/flow-wishlist.svg",
+          "assets/svg/flow-publish.svg", "assets/svg/flow-ascii.svg",
+          "assets/svg/flow-wishlist.svg", "assets/svg/hall-of-fame.svg",
           "assets/ascii/four_rooms.py", "style.css",
           "supabase/submit.js", "supabase/wishlist.sql"]
 
@@ -153,6 +154,42 @@ def check_no_ascii_flowcharts(name: str, src: str) -> None:
                 f"— draw it as SVG")
 
 
+def check_animated_svg_in_object(name: str, src: str) -> None:
+    """An SVG that contains animation must be embedded with <object>, not <img>.
+
+    An SVG loaded through <img> is a sandboxed image document. It runs its
+    own CSS animations, but it does NOT inherit the parent's
+    prefers-reduced-motion setting — so a reader who asked for less motion
+    still gets a scrolling leaderboard. <object> creates a real nested
+    document, which does honour it.
+
+    Caught by testing: the <img> version kept animating under
+    reduced_motion="reduce"; the <object> version stopped.
+    """
+    # Which SVG files actually animate?
+    animated = set()
+    svg_dir = os.path.join(ROOT, "assets", "svg")
+    if os.path.isdir(svg_dir):
+        for f in os.listdir(svg_dir):
+            if not f.endswith(".svg"):
+                continue
+            body = open(os.path.join(svg_dir, f), encoding="utf-8").read()
+            if "@keyframes" in body and "animation:" in body:
+                animated.add(f)
+
+    for m in re.finditer(r'<img\b[^>]*\bsrc="([^"]+\.svg)"[^>]*>', src, re.S):
+        target = os.path.basename(m.group(1))
+        if target not in animated:
+            continue
+        # Is this <img> the fallback inside an <object>? Then it is fine.
+        before = src[: m.start()]
+        if before.rfind("<object") > before.rfind("</object"):
+            continue
+        line = src.count("\n", 0, m.start()) + 1
+        err(f"{name}:{line}: animated SVG '{target}' used in <img> "
+            f"— use <object> so prefers-reduced-motion is honoured")
+
+
 def check_markdown(name: str, src: str) -> None:
     # Strip code spans and <code> blocks first: a page may legitimately
     # quote the literal marker (e.g. documenting the very bug this checks).
@@ -190,6 +227,7 @@ def main() -> int:
         check_tag_balance(name, src)
         check_no_nested_p(name, src)
         check_no_ascii_flowcharts(name, src)
+        check_animated_svg_in_object(name, src)
         check_markdown(name, src)
         check_refs(name, src)
 

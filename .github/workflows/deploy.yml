@@ -63,6 +63,7 @@ jobs:
                    assets/four-rooms.mp4 assets/svg/mock-scores.svg \
                    assets/svg/flow-capture.svg assets/svg/flow-publish.svg \
                    assets/svg/flow-ascii.svg assets/svg/flow-wishlist.svg \
+                   assets/svg/hall-of-fame.svg \
                    supabase/submit.js supabase/wishlist.sql; do
             c=$(curl -s -o /dev/null -w '%{http_code}' "$url/$p")
             echo "  HTTP $c  /$p"

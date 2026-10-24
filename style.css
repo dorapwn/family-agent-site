@@ -114,6 +114,13 @@
     display:block}
   figcaption.small{font-size:12px;color:var(--ink-dim);padding:8px 2px}
 
+  /* An animated SVG needs <object>, not <img>: an SVG in an <img> is
+     sandboxed and does NOT inherit the page's prefers-reduced-motion
+     setting, so it would keep scrolling for a reader who asked for less
+     motion. <object> is a real nested document and honours it. */
+  object.shot{width:100%;aspect-ratio:640/440;height:auto}
+  object.shot img{width:100%;height:100%}
+
   pre{background:#0d0f12;border:1px solid var(--line);border-radius:8px;
     padding:14px 16px;overflow-x:auto;font-size:13px;line-height:1.55}
   code{font-family:var(--mono)}

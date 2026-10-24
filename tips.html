@@ -35,6 +35,7 @@
   <ol>
     <li><a href="#一-畫圖-svg">一、畫圖：SVG</a></li>
     <li><a href="#二-短片-ascii-動畫">二、短片：ASCII 動畫</a></li>
+    <li><a href="#三-會郁嘅-svg-復古街機排行榜">三、會郁嘅 SVG：復古街機排行榜</a></li>
     <li><a href="#一句記住">一句記住</a></li>
   </ol>
 </details>
@@ -128,12 +129,85 @@
   <b>「用洋紅色，郁慢啲」</b>
 </div>
 
+<h2 id="三、會郁嘅-svg：復古街機排行榜">三、會郁嘅 SVG：復古街機排行榜</h2>
+
+<p>
+  SVG 唔止可以畫圖，仲可以<strong>郁</strong>。
+  下面呢個「星光大道」就係一個 SVG 檔案，
+  入面寫住幾行指令叫佢自己捲動。
+</p>
+
+<figure>
+  <object class="shot" type="image/svg+xml" data="assets/svg/hall-of-fame.svg">
+    <img class="shot" src="assets/svg/hall-of-fame.svg"
+         alt="復古街機風格嘅星光大道排行榜，六行排名同分數，頂部有走馬燈，底部有閃爍嘅 PRESS START">
+  </object>
+  <figcaption class="small">
+    名單慢慢向上捲，標題有霓虹光，底部個「PRESS START」會閃。
+    原始碼喺
+    <a href="https://github.com/dorapwn/family-agent-site/blob/main/assets/svg/hall-of-fame.svg"
+       target="_blank" rel="noopener">GitHub 上面</a>。
+  </figcaption>
+</figure>
+
+<h3>同 ASCII 動畫有咩唔同？</h3>
+
+<table>
+  <tr><th></th><th>ASCII 動畫</th><th>會郁嘅 SVG</th></tr>
+  <tr>
+    <td>點樣整</td>
+    <td>逐格計 480 次，砌成一段影片</td>
+    <td>寫幾行指令叫佢郁</td>
+  </tr>
+  <tr>
+    <td>幾大</td>
+    <td>一個幾 MB 嘅影片檔</td>
+    <td>一個幾 KB 嘅文字檔</td>
+  </tr>
+  <tr>
+    <td>幾耐先出</td>
+    <td>計四分鐘</td>
+    <td>即開即有</td>
+  </tr>
+  <tr>
+    <td>改一個名</td>
+    <td>要重跑成條片</td>
+    <td>改一行字就得</td>
+  </tr>
+</table>
+
+<div class="note">
+  <strong>所以邊樣好？</strong>
+  兩個都有用。想要<strong>似真嘅老遊戲</strong>，用 ASCII 動畫。
+  想要<strong>自己改、快、檔案細</strong>，用會郁嘅 SVG。
+  呢個排行榜就係後者。
+</div>
+
+<h3>想改成自己嘅？</h3>
+
+<p>
+  直接同智能體講就得，唔使識寫代碼：
+</p>
+
+<div class="prompt">
+  <b>「將排行榜啲名改成屋企人嘅名，分數改返真實分數」</b><br>
+  <b>「整多一個排行榜，變成學校運動會」</b><br>
+  <b>「呢個 SVG 慢啲／快啲」</b>
+</div>
+
+<div class="note">
+  <strong>唔想郁？</strong>
+  唔使問，已經自動停。
+  如果你部手機開咗「減少動態效果」（慳電模式），
+  呢啲圖就會定喺一格，淨係睇唔郁。
+</div>
+
 <h2 id="一句記住">一句記住</h2>
 
 <div class="note">
-  <strong>呢兩招嘅共通點：</strong>
+  <strong>呢三招嘅共通點：</strong>
   成品係<strong>文字寫出嚟</strong>，唔係用滑鼠拖出嚟。
-  所以改一個位唔使由頭做過， 而且放大都唔會花。
+  所以改一個位唔使由頭做過，而且放大都唔會花。
 </div>
 
 <footer>
