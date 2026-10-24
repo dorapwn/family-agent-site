@@ -150,6 +150,30 @@
     .deck-bar{justify-content:center}
   }
 
+  /* Store badges. Big enough to tap on a phone, and each one says where it
+     goes in its own words, so nobody has to know which store they have. */
+  .stores{display:flex;gap:12px;flex-wrap:wrap;margin:24px 0}
+  .store{display:flex;align-items:center;gap:12px;text-decoration:none;
+    color:var(--ink);background:var(--card);border:1px solid var(--line);
+    border-radius:10px;padding:12px 20px;min-height:64px;flex:1 1 220px;
+    transition:.15s}
+  .store:hover{border-color:var(--amber);transform:translateY(-2px)}
+  .store:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
+  .store-ico{width:30px;height:30px;flex:none;color:var(--ink)}
+  .store-txt{display:flex;flex-direction:column;line-height:1.25}
+  .store-txt small{font-size:11px;color:var(--ink-dim);letter-spacing:.02em}
+  .store-txt strong{font-size:17px;font-weight:600}
+  .store-ios:hover .store-ico{color:#a9c8f5}
+  .store-android:hover .store-ico{color:#8ee6a0}
+  @media (max-width:600px){
+    .stores{flex-direction:column}
+    .store{flex:1 1 auto}
+  }
+
+  /* A bare web address, big enough to read and tap. */
+  .web-link{font-size:22px;margin:16px 0}
+  .web-link a{text-decoration:none;border-bottom:2px solid var(--teal)}
+
   footer{border-top:1px solid var(--line);margin-top:64px;padding-top:24px;
     color:var(--ink-dim);font-size:13px}
   .tag{display:inline-block;border:1px solid var(--line);border-radius:20px;
